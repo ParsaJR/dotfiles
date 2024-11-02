@@ -1,0 +1,10 @@
+[user]
+	name = ParsaJR
+	email = parsajr@proton.me
+	signingKey = 6C971FCF7C0787F1
+[alias]
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+[commit]
+	gpgsign = true
