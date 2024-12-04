@@ -91,22 +91,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Press c to clear the terminal screen
-alias c='clear'
-# Fix Poping Sound 
-alias unfuckaudio='pulseaudio -k'
-# Run MongoDB For Development On Port 27017
-alias runmongo='docker run --name mymongo -d -p 27017:27017 mongo:latest'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -116,22 +100,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# My Server
-alias server='ssh root@38.175.200.250'
-
-# Launch Nekoray
-alias nekoray='sudo ./Downloads/nekoray/nekoray'
-# Launch Anki
-alias anki='flatpak run net.ankiweb.Anki &'
-# cd aliases
-alias ..='cd ,,'
-alias ...='cd ../..'
 # cheatsheet
 function cheat(){
 	curl cheat.sh/$1
 }
-
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
