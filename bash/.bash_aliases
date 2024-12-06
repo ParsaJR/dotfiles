@@ -15,7 +15,7 @@ alias unfuckaudio='pulseaudio -k'
 alias runmongo='docker run --name mymongo -d -p 27017:27017 mongo:latest'
 
 # My Server
-alias server='ssh root@38.175.200.250'
+alias server='ssh parsajr@38.175.200.250'
 
 # Launch Anki
 alias anki='flatpak run net.ankiweb.Anki &'

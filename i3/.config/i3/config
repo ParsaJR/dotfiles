@@ -195,4 +195,20 @@ bar {
 	position bottom
 }
 
+# Keyboard input config for English/Persian
 exec_always "setxkbmap -model pc104 -layout us,ir -variant ,,  -option grp:alt_shift_toggle"
+
+# Reboot,lock,Shutdown
+set $mode_system System (l) lock, (Shift + r) reboot, (Shift + s) shutdown
+bindsym $mod+o mode "$mode_system"
+mode "$mode_system" {
+	bindsym l exec --no-startup-id i3lock, mode "default"
+	bindsym Shift+r exec --no-startup-id reboot, mode "default"
+	bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+	bindsym Escape mode "default"
+}
+
+
+
+
+
