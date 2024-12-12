@@ -199,12 +199,13 @@ bar {
 exec_always "setxkbmap -model pc104 -layout us,ir -variant ,,  -option grp:alt_shift_toggle"
 
 # Reboot,lock,Shutdown
-set $mode_system System (l) lock, (Shift + r) reboot, (Shift + s) shutdown
+set $mode_system System (l) lock, (Shift + r) reboot, (Shift + t) Shutdown, (Shift + s) Sleep 
 bindsym $mod+o mode "$mode_system"
 mode "$mode_system" {
 	bindsym l exec --no-startup-id i3lock, mode "default"
 	bindsym Shift+r exec --no-startup-id reboot, mode "default"
-	bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+	bindsym Shift+t exec --no-startup-id systemctl poweroff, mode "default"
+	bindsym Shift+s exec --no-startup-id systemctl suspend, mode "default"
 	bindsym Escape mode "default"
 }
 

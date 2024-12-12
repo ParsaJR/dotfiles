@@ -23,3 +23,6 @@ alias anki='flatpak run net.ankiweb.Anki &'
 # cd aliases
 alias ..='cd ,,'
 alias ...='cd ../..'
+
+# Neovim alias
+alias nvim='nvim.appimage'
