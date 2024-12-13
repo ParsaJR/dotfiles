@@ -3,7 +3,7 @@
 echo "*** Dotfiles Install Script ***"
 
 if [ -d /usr/local/share/fonts ] && ! fc-list | grep -q "JetBrains*"; then
-	echo "Downloading fonts..."
+	echo "Downloading fonts... Please wait"
 	cd /usr/local/share/fonts
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.tar.xz
 	tar -xf JetBrainsMono.tar.xz
