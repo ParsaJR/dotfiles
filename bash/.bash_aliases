@@ -26,3 +26,6 @@ alias ...='cd ../..'
 
 # Neovim alias
 alias nvim='nvim.appimage'
+
+#helix
+alias helix='hx'

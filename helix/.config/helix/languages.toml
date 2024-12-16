@@ -1,0 +1,10 @@
+[[language]]
+name = "vue"
+auto-format = true
+formatter =  { command = "prettier", args = ["--parser", "vue"] }
+language-servers = ["vuels", "typescript-language-server", "emmet-lsp", "scls","tailwindcss-ls"]
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location = "/home/parsa/.nvm/versions/node/v20.16.0/lib/node_modules/@vue/language-server/"
+languages = ["vue"]
