@@ -1,15 +1,17 @@
 #!/bin/bash
 
-echo "*** Dotfiles Install Script ***"
+echo -e "*** Dotfiles Install Script ***\n"
 
 # dependencies that need to be installed in order to use them here.
 DEPS=(wget grep stow)
 DOTDIR=$(dirname -- "$(realpath -- "$0")")
+checkIcon="\ueab2"
+errorIcon="\uea87"
 
 # checking for existence of dependencies...
 for dep in "${DEPS[@]}"; do
 	if ! command -v "$dep" > /dev/null; then
-		echo "$dep is not installed... Aborting" >&2
+		echo "$errorIcon $dep is not installed... Aborting" >&2
 		exit 1
 	fi 
 done
@@ -25,9 +27,9 @@ if [ -d /usr/local/share/fonts ] && ! fc-list | grep -q "JetBrains*"; then
 	echo "Done."
 else
 	if fc-list | grep -q "JetBrains*"; then
-	echo "fonts are installed"
+	echo -e "$checkIcon Fonts are installed."
 	else
-		echo "Directory font does not exist!"
+		echo "$errorIcon Directory font does not exist!"
 	fi
 fi
 
@@ -35,6 +37,8 @@ cd "$DOTDIR"
 
 for package in "$DOTDIR"/*; do
 	if [ -d "$package" ]; then
-		stow "$package"
+		stow $(basename "$package")
 	fi
 done
+
+echo -e "\n$checkIcon Dotfiles are configured."
