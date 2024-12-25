@@ -209,6 +209,10 @@ mode "$mode_system" {
 	bindsym Escape mode "default"
 }
 
+# Screen backlight of laptop
+exec_always "brightnessctl set 80%"
+bindsym $mod+0xffc3 exec --no-startup-id brightnessctl set +10%
+bindsym $mod+0xffc2 exec --no-startup-id brightnessctl set 10-%
 
 
 
