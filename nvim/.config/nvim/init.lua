@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+vim.opt.clipboard = "unnamedplus"
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -24,5 +26,4 @@ require("lazy").setup("plugins",
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
-
 
