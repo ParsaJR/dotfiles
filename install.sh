@@ -17,13 +17,14 @@ for dep in "${DEPS[@]}"; do
 done
 
 # installing nerdfonts "JetbrainsMono"
-if [ -d /usr/local/share/fonts ] && ! fc-list | grep -q "JetBrains*"; then
+if [ -d ~/.local/share/fonts ] && ! fc-list | grep -q "JetBrains*"; then
 	echo "Downloading fonts... Please wait"
-	cd /usr/local/share/fonts
+	cd ~/.local/share/fonts
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.tar.xz
 	tar -xf JetBrainsMono.tar.xz
 	echo "Installing..."
 	fc-cache -f
+	rm JetBrainsMono.tar.xz
 	echo "Done."
 else
 	if fc-list | grep -q "JetBrains*"; then
