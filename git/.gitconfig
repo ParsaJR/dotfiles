@@ -2,6 +2,6 @@
 	name = ParsaJR
 	email = parsajr@proton.me
 [alias]
-	st = status
+	s = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
