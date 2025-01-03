@@ -17,7 +17,7 @@ tztime Tehran {
 }
 
 memory {
-	format = "Mem: %free"
+	format = "Mem: %available"
         threshold_degraded = "10%"
         format_degraded = "MEMORY: %free"
 }
