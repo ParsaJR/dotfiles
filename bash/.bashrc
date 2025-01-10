@@ -128,3 +128,4 @@ case ":$PATH:" in
 esac
 # pnpm end
 export PATH=$HOME/.dotnet/tools:$PATH
+export PATH=$PATH:$HOME/scripts
