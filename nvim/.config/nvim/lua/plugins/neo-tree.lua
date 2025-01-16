@@ -8,10 +8,36 @@ return {
 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
 	config = function()
-
 		-- configure neotree
-		vim.keymap.set('n','<C-b>', ':Neotree toggle filesystem reveal right<CR>')
-
-	end
+		Find_buffer_by_type = function(type)
+			for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+				local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+				if ft == type then
+					return buf
+				end
+			end
+			return -1
+		end
+		toggle_neotree = function(toggle_command)
+			if Find_buffer_by_type("neo-tree") > 0 then
+				require("neo-tree.command").execute({ action = "close" })
+			else
+				toggle_command()
+			end
+		end
+		require("neo-tree").setup({
+			close_if_last_window = true,
+		})
+	end,
+	keys = {
+		{
+			"<leader>b",
+			function()
+				toggle_neotree(function()
+					require("neo-tree.command").execute({ action = "focus", reveal = true, position = "right" })
+				end)
+			end,
+			desc = "Find Plugin File",
+		},
+	},
 }
-
