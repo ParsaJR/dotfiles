@@ -5,3 +5,4 @@
 	s = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
+	c = !git add -A && git commit -m
