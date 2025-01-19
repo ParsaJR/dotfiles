@@ -29,7 +29,8 @@ set $mod Mod4
 gaps inner 5px
 
 # run some apps on startup
-exec firefox
+exec --no-startup-id i3-msg 'workspace 1:Web; exec firefox'
+exec --no-startup-id i3-msg 'workspace 2:Terminal; exec i3-sensible-terminal'
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -134,9 +135,9 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
+set $ws1 "1:Web"
+set $ws2 "2:Terminal"
+set $ws3 "3:Dev"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -208,6 +209,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 	position bottom
+	strip_workspace_numbers yes
 }
 
 # Keyboard input config for English/Persian
@@ -228,7 +230,3 @@ mode "$mode_system" {
 exec_always "brightnessctl set 80%"
 bindsym $mod+0xffc3 exec --no-startup-id brightnessctl set +10%
 bindsym $mod+0xffc2 exec --no-startup-id brightnessctl set 10-%
-
-
-
-
