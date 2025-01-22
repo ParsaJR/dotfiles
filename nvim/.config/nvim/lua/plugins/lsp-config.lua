@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "bashls", "ts_ls", "volar", "html" },
+				ensure_installed = { "lua_ls", "bashls", "ts_ls", "volar", "html","tailwindcss","cssls" },
 			})
 		end,
 	},
@@ -26,6 +26,12 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.bashls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.cssls.setup({
 				capabilities = capabilities,
 			})
 			local vue_language_server_path = mason_registry.get_package("vue-language-server")
