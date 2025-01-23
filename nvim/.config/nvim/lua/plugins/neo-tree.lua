@@ -27,6 +27,17 @@ return {
 		end
 		require("neo-tree").setup({
 			close_if_last_window = true,
+			event_handlers = {
+				{
+					event = "file_open_requested",
+					handler = function()
+						-- auto close
+						-- vim.cmd("Neotree close")
+						-- OR
+						require("neo-tree.command").execute({ action = "close" })
+					end,
+				},
+			},
 		})
 	end,
 	keys = {
@@ -34,7 +45,8 @@ return {
 			"<leader>b",
 			function()
 				toggle_neotree(function()
-					require("neo-tree.command").execute({ action = "focus", reveal = true, position = "right" })
+					require("neo-tree.command").execute({ action = "focus", reveal = true, position =
+					"right" })
 				end)
 			end,
 			desc = "Find Plugin File",
