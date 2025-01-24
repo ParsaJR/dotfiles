@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "bashls", "ts_ls", "volar", "html","tailwindcss","cssls" },
+				ensure_installed = { "lua_ls", "bashls", "ts_ls", "volar", "html", "tailwindcss", "cssls" },
 			})
 		end,
 	},
@@ -20,6 +20,19 @@ return {
 			local lspconfig = require("lspconfig")
 			local mason_registry = require("mason-registry")
 			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" }, -- Add 'vim' to the list of globals
+						},
+						workspace = {
+							library = vim.api.nvim_get_runtime_file("", true), -- Include Neovim runtime files
+						},
+						telemetry = {
+							enable = false, -- Disable telemetry
+						},
+					},
+				},
 				capabilities = capabilities,
 			})
 			lspconfig.html.setup({
