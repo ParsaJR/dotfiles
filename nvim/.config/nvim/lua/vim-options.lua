@@ -20,11 +20,22 @@ function _G.get_tabline_string()
 			tabline_string = tabline_string ..
 			"%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
-
 	end
 	tabline_string = tabline_string .. "%#TabLineFill#"
 	return tabline_string
 end
 
 vim.o.tabline = "%!v:lua.get_tabline_string()"
+-- always show the tabline
 vim.o.showtabline = 2
+
+--Autosave by FocusLost
+vim.api.nvim_create_augroup("autosave_buffer", { clear = true })
+
+vim.api.nvim_create_autocmd("FocusLost", {
+	group = "autosave_buffer",
+	pattern = "*",
+	callback = function()
+		vim.cmd("w")
+	end,
+})
