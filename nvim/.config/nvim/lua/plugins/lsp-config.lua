@@ -37,6 +37,12 @@ return {
 			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
+				filetypes = { "html", "vue" },
+				init_options = {
+					provideFormatter = true,
+					embeddedLanguages = { css = true, javascript = true },
+				--	configurationSection = { "html", "css", "javascript", "vue" },
+				},
 			})
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
@@ -47,9 +53,8 @@ return {
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
 			})
-			local vue_language_server_path = mason_registry.get_package("vue-language-server")
-			    :get_install_path()
-			    .. "/node_modules/@vue/language-server"
+			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+				.. "/node_modules/@vue/language-server"
 			lspconfig.ts_ls.setup({
 				init_options = {
 					plugins = {
@@ -61,9 +66,6 @@ return {
 					},
 				},
 				filetypes = { "typescript", "javascript", "vue" },
-			})
-			lspconfig.volar.setup({
-				capabilities = capabilities,
 			})
 			vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
