@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "bashls", "ts_ls", "volar", "html", "tailwindcss", "cssls" },
+				ensure_installed = { "lua_ls", "bashls", "ts_ls", "volar", "html", "tailwindcss", "cssls", "emmet_ls" },
 			})
 		end,
 	},
@@ -41,8 +41,11 @@ return {
 				init_options = {
 					provideFormatter = true,
 					embeddedLanguages = { css = true, javascript = true },
-				--	configurationSection = { "html", "css", "javascript", "vue" },
+					--	configurationSection = { "html", "css", "javascript", "vue" },
 				},
+			})
+			lspconfig.emmet_ls.setup({
+				capabilities = capabilities,
 			})
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
@@ -53,8 +56,9 @@ return {
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
 			})
-			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-				.. "/node_modules/@vue/language-server"
+			local vue_language_server_path = mason_registry.get_package("vue-language-server")
+			    :get_install_path()
+			    .. "/node_modules/@vue/language-server"
 			lspconfig.ts_ls.setup({
 				init_options = {
 					plugins = {
