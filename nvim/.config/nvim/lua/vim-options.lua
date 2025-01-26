@@ -14,11 +14,9 @@ function _G.get_tabline_string()
 		local buffername_short = vim.fn.fnamemodify(buffername, ":t")
 		-- check if it is the active tab
 		if tabnum == vim.fn.tabpagenr() then
-			tabline_string = tabline_string ..
-			"%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		else
-			tabline_string = tabline_string ..
-			"%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
 	end
 	tabline_string = tabline_string .. "%#TabLineFill#"
@@ -36,6 +34,8 @@ vim.api.nvim_create_autocmd("FocusLost", {
 	group = "autosave_buffer",
 	pattern = "*",
 	callback = function()
-		vim.cmd("w")
+		if vim.bo.modified then
+			vim.cmd("w")
+		end
 	end,
 })
