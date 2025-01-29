@@ -5,7 +5,21 @@ return {
 		-- configure tree_sitter
 		local configs = require("nvim-treesitter.configs")
 		configs.setup({
-			ensure_installed = { "lua", "html", "css", "javascript" },
+			ensure_installed = {
+				"lua",
+				"html",
+				"css",
+				"javascript",
+				"go",
+				"gomod",
+				"gosum",
+				"gowork",
+				"dockerfile",
+				"gitignore",
+				"markdown",
+			},
+			auto_install = false,
+			sync_install = false,
 			highlight = { enable = true },
 			indent = { enable = true },
 		})
