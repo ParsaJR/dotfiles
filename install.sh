@@ -10,10 +10,10 @@ errorIcon="\uea87"
 
 # checking for existence of dependencies...
 for dep in "${DEPS[@]}"; do
-	if ! command -v "$dep" > /dev/null; then
+	if ! command -v "$dep" >/dev/null; then
 		echo "$errorIcon $dep is not installed... Aborting" >&2
 		exit 1
-	fi 
+	fi
 done
 
 # installing nerdfonts "JetbrainsMono"
@@ -28,7 +28,7 @@ if [ -d ~/.local/share/fonts ] && ! fc-list | grep -q "JetBrains*"; then
 	echo "Done."
 else
 	if fc-list | grep -q "JetBrains*"; then
-	echo -e "$checkIcon Fonts are installed."
+		echo -e "$checkIcon Fonts are installed."
 	else
 		echo "$errorIcon Directory font does not exist!"
 	fi
