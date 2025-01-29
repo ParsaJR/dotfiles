@@ -127,5 +127,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
 export PATH=$HOME/.dotnet/tools:$PATH
 export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:/usr/local/go/bin
