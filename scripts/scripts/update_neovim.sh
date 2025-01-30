@@ -10,7 +10,7 @@ LATEST_VERSION=$(curl -s -L $NVIM_GH_URL | grep -o 'href="[^"]*' | grep -o 'rele
 CURRENT_VERSION=$(nvim.appimage --version | grep -o 'NVIM .*' | grep -o 'v.*')
 
 # Path to download the nvim appimage
-DOWNLOAD_LINK="https://github.com/neovim/neovim/releases/download/$LATEST_VERSION/nvim.appimage"
+DOWNLOAD_LINK="https://github.com/neovim/neovim/releases/download/$LATEST_VERSION/nvim-linux-x86_64.appimage"
 
 echo "Current Neovim version : $CURRENT_VERSION"
 echo "Latest Neovim version : $LATEST_VERSION"
