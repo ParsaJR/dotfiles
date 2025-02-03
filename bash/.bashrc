@@ -131,3 +131,4 @@ esac
 export PATH=$HOME/.dotnet/tools:$PATH
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/parsa/go/bin

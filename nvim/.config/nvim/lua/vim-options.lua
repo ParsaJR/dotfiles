@@ -1,9 +1,21 @@
 -- Some general configuration that does not relate to any specific plugin!
 
+local helper = require("helpers")
+
+-- General
 vim.cmd("set number")
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
 
+-- Keymap for tab-Navigation
+vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-T>", ":tabnew<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-W>", ":tabclose<CR>", { noremap = true, silent = true })
+
+helper.Map("t", "<ESC>", "<C-\\><C-N>")
+
+-- Customizing the tabline label
 function _G.get_tabline_string()
 	local tabline_string = ""
 	for tabnum = 1, vim.fn.tabpagenr("$") do
@@ -24,7 +36,6 @@ function _G.get_tabline_string()
 end
 
 vim.o.tabline = "%!v:lua.get_tabline_string()"
--- always show the tabline
 vim.o.showtabline = 2
 
 --Autosave by FocusLost

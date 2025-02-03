@@ -45,7 +45,13 @@ return {
 				},
 				capabilities = capabilities,
 			})
-			lspconfig.gopls.setup({})
+			lspconfig.gopls.setup({
+				settings = {
+					gopls = {
+						completeUnimported = true,
+					},
+				},
+			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
 				filetypes = { "html", "vue" },
@@ -67,9 +73,8 @@ return {
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
 			})
-			local vue_language_server_path = mason_registry.get_package("vue-language-server")
-			    :get_install_path()
-			    .. "/node_modules/@vue/language-server"
+			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+				.. "/node_modules/@vue/language-server"
 			lspconfig.ts_ls.setup({
 				init_options = {
 					plugins = {
@@ -82,6 +87,19 @@ return {
 				},
 				filetypes = { "typescript", "javascript", "vue" },
 			})
+			-- check if the buffer is vue file? if is, open run the pnpm run dev
+			function RunDev()
+				local buffer = 0
+				local bufferName = vim.api.nvim_buf_get_name(buffer)
+				if bufferName:sub(-4) == ".vue" then
+					vim.cmd("tabnew | terminal pnpm run dev")
+				end
+				if bufferName:sub(-3) == ".go" then
+					vim.cmd("tabnew | terminal go run .")
+				end
+			end
+
+			vim.keymap.set("n", "<F5>", RunDev, { noremap = true, silent = true })
 			vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
