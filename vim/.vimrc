@@ -1,3 +1,5 @@
+let mapleader = " "
+
 set number
 set autoindent
 set clipboard+=unnamedplus
@@ -9,6 +11,4 @@ set scrolloff=5
 " Do incremental searching.
 set incsearch
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
-
+ map Q gq
