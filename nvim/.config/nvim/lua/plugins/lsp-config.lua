@@ -54,7 +54,7 @@ return {
 			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
-				filetypes = { "html", "vue" },
+				filetypes = { "html" },
 				init_options = {
 					provideFormatter = true,
 					embeddedLanguages = { css = true, javascript = true },
