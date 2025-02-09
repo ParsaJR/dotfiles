@@ -94,9 +94,11 @@ return {
 				local bufferName = vim.api.nvim_buf_get_name(buffer)
 				if bufferName:sub(-4) == ".vue" then
 					vim.cmd("tabnew | terminal pnpm run dev")
+				        vim.cmd("tabmove $")
 				end
 				if bufferName:sub(-3) == ".go" then
 					vim.cmd("tabnew | terminal go run .")
+					vim.cmd("tabmove $")
 				end
 			end
 

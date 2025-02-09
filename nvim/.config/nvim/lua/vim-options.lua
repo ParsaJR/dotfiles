@@ -13,11 +13,12 @@ vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>", { noremap = true, silent = tr
 vim.keymap.set("n", "<C-T>", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-W>", ":tabclose<CR>", { noremap = true, silent = true })
 
-
 helper.Map("t", "<ESC>", "<C-\\><C-N>")
-helper.Map("n","<M-Right>", ":+tabmove<CR>")
-helper.Map("n","<M-Left>", ":-tabmove<CR>")
+helper.Map("n", "<M-Right>", ":+tabmove<CR>")
+helper.Map("n", "<M-Left>", ":-tabmove<CR>")
+
 -- Customizing the tabline label
+vim.api.nvim_set_hl(0, "npmbuffer", { foreground = "#f69220", background = "#000000" })
 function _G.get_tabline_string()
 	local tabline_string = ""
 	for tabnum = 1, vim.fn.tabpagenr("$") do
@@ -29,6 +30,8 @@ function _G.get_tabline_string()
 		-- check if it is the active tab
 		if tabnum == vim.fn.tabpagenr() then
 			tabline_string = tabline_string .. "%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+		elseif helper.CheckBufferType(tabnum) == "terminal" then
+			tabline_string = tabline_string .. "%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		else
 			tabline_string = tabline_string .. "%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
