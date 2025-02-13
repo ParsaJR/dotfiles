@@ -49,7 +49,7 @@ vim.o.showtabline = 2
 --Autosave by FocusLost
 vim.api.nvim_create_augroup("autosave_buffer", { clear = true })
 
-vim.api.nvim_create_autocmd("FocusLost", {
+vim.api.nvim_create_autocmd({ "FocusLost", "TabLeave" }, {
 	group = "autosave_buffer",
 	pattern = "*",
 	callback = function()
