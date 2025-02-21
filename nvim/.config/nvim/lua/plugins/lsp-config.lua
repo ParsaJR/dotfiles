@@ -53,7 +53,7 @@ return {
 			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
-				filetypes = { "html","vue" },
+				filetypes = { "html", "vue" },
 				init_options = {
 					provideFormatter = false,
 					embeddedLanguages = { css = true, javascript = true },
@@ -107,8 +107,9 @@ return {
 				capabilities = capabilities,
 				filetypes = { "css", "scss", "less" },
 			})
-			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-				.. "/node_modules/@vue/language-server"
+			local vue_language_server_path = mason_registry.get_package("vue-language-server")
+			    :get_install_path()
+			    .. "/node_modules/@vue/language-server"
 			lspconfig.ts_ls.setup({
 				init_options = {
 					plugins = {

@@ -5,17 +5,26 @@ local helper = require("helpers")
 -- General
 vim.cmd("set number")
 vim.g.mapleader = " "
-vim.opt.clipboard = "unnamedplus"
+
+-- paste last thing yanked, not deleted
+helper.Map("n", ",p", '"0p"')
+helper.Map("n", ",P", '"0P"')
 
 -- Keymap for tab-Navigation
 vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-T>", ":tabnew<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-W>", ":tabclose<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>w", ":tabclose<CR>", { noremap = true, silent = true })
 
+-- Escape in terminal mode
 helper.Map("t", "<ESC>", "<C-\\><C-N>")
+-- move tabs
 helper.Map("n", "<M-Right>", ":+tabmove<CR>")
 helper.Map("n", "<M-Left>", ":-tabmove<CR>")
+
+-- moving lines to the left and right more easily
+helper.Map("v", "<", "<gv")
+helper.Map("v", ">", ">gv")
 
 -- Customizing the tabline label
 vim.api.nvim_set_hl(0, "npmbuffer", { foreground = "#f69220", background = "#000000" })
@@ -29,14 +38,11 @@ function _G.get_tabline_string()
 		local buffername_short = vim.fn.fnamemodify(buffername, ":t")
 		-- check if it is the active tab
 		if tabnum == vim.fn.tabpagenr() then
-			tabline_string = tabline_string ..
-			"%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		elseif helper.GetBufferType(tabnum) == "terminal" then
-			tabline_string = tabline_string ..
-			"%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		else
-			tabline_string = tabline_string ..
-			"%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
 	end
 	tabline_string = tabline_string .. "%#TabLineFill#"

@@ -28,7 +28,7 @@ return {
 		require("neo-tree").setup({
 			close_if_last_window = true,
 			window = {
-				mappings = { ["<cr>"] = "open_tabnew",["t"] = "open" },
+			--	mappings = { ["<cr>"] = "open_tabnew",["t"] = "open" },
 			},
 			event_handlers = {
 				{
