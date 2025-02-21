@@ -33,11 +33,13 @@ return {
 						-- }
 					},
 				},
-				defaults=  {
+				defaults = {
 					mappings = {
-
-					}
-				}
+						i = {
+							["<CR>"] = require("telescope.actions").file_tab,
+						},
+					},
+				},
 			})
 			-- To get ui-select loaded and working with telescope, you need to call
 			-- load_extension, somewhere after setup function:
