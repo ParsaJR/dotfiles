@@ -1,6 +1,7 @@
 -- Some general configuration that does not relate to any specific plugin!
 
 local helper = require("helpers")
+vim.opt.clipboard = "unnamedplus"
 
 -- General
 vim.cmd("set number")

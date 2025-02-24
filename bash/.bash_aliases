@@ -30,7 +30,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 # Neovim alias
-alias v='nvim.appimage'
+alias nvim='nvim.appimage'
 
 #helix
 alias helix='hx'
