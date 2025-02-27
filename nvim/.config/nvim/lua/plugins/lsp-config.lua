@@ -53,9 +53,9 @@ return {
 			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
-				filetypes = { "html", "vue" },
+				filetypes = { "html" },
 				init_options = {
-					provideFormatter = false,
+					provideFormatter = true,
 					embeddedLanguages = { css = true, javascript = true },
 					--	configurationSection = { "html", "css", "javascript", "vue" },
 				},
@@ -107,9 +107,41 @@ return {
 				capabilities = capabilities,
 				filetypes = { "css", "scss", "less" },
 			})
-			local vue_language_server_path = mason_registry.get_package("vue-language-server")
-			    :get_install_path()
-			    .. "/node_modules/@vue/language-server"
+			lspconfig.eslint.setup({
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"vue",
+					"html",
+					"markdown",
+					"json",
+					"jsonc",
+					"yaml",
+					"toml",
+					"xml",
+					"gql",
+					"graphql",
+					"astro",
+					"svelte",
+					"css",
+					"less",
+					"scss",
+					"pcss",
+					"postcss",
+				},
+				on_attach = function(client, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						command = "EslintFixAll",
+					})
+				end,
+			})
+			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+				.. "/node_modules/@vue/language-server"
 			lspconfig.ts_ls.setup({
 				init_options = {
 					plugins = {
