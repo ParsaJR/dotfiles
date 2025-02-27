@@ -19,5 +19,5 @@ require("vim-options")
 -- Setup lazy.nvim
 require("lazy").setup("plugins", {
 	-- automatically check for plugin updates
-	checker = { enabled = true, notify = false },
+	checker = { enabled = true, notify = false },change_detection = {notify = false}
 })
