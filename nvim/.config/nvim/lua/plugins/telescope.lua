@@ -39,6 +39,9 @@ return {
 						--	["<CR>"] = require("telescope.actions").file_tab,
 						},
 					},
+					file_ignore_patterns = {
+						"node_modules"
+					}
 				},
 			})
 			-- To get ui-select loaded and working with telescope, you need to call
