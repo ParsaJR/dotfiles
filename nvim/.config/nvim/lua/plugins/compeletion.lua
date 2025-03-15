@@ -10,6 +10,9 @@ return {
 		},
 	},
 	{
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -37,9 +40,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
-				}, {
-
-					{ name = "buffer" },
+					{ name = "nvim_lsp_signature_help" },
 				}),
 			})
 		end,
