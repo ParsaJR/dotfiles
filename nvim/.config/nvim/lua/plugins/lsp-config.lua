@@ -62,6 +62,7 @@ return {
 				},
 			})
 			lspconfig.emmet_language_server.setup({
+				capabilities = capabilities,
 				filetypes = {
 					"css",
 					"eruby",
