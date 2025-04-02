@@ -123,7 +123,6 @@ export PATH=$HOME/.dotnet/tools:$PATH
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/parsa/go/bin
-
 # pnpm
 export PNPM_HOME="/home/parsa/.local/share/pnpm"
 case ":$PATH:" in
@@ -131,3 +130,5 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+complete -C /home/parsa/go/bin/gocomplete go
