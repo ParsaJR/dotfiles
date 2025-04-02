@@ -2,14 +2,25 @@
 
 local helper = require("helpers")
 vim.opt.clipboard = "unnamedplus"
+vim.o.winborder = 'rounded'
 
 -- General
 vim.cmd("set number")
 vim.g.mapleader = " "
 
--- paste last thing yanked, not deleted
-helper.Map("n", ",p", '"0p"')
-helper.Map("n", ",P", '"0P"')
+vim.diagnostic.config({
+  -- Use the default configuration
+  virtual_lines = false
+
+  -- Alternatively, customize specific options
+  -- virtual_lines = {
+  --  -- Only show virtual line diagnostics for the current cursor line
+  --  current_line = true,
+  -- },
+})
+
+-- Copy entire buffer 
+helper.Map("n", "<leader>cb", ":%y+<CR>")
 
 -- Keymap for tab-Navigation
 vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { noremap = true, silent = true })
@@ -39,11 +50,14 @@ function _G.get_tabline_string()
 		local buffername_short = vim.fn.fnamemodify(buffername, ":t")
 		-- check if it is the active tab
 		if tabnum == vim.fn.tabpagenr() then
-			tabline_string = tabline_string .. "%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		elseif helper.GetBufferType(tabnum) == "terminal" then
-			tabline_string = tabline_string .. "%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		else
-			tabline_string = tabline_string .. "%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
 	end
 	tabline_string = tabline_string .. "%#TabLineFill#"
