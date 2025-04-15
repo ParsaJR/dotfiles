@@ -238,3 +238,8 @@ bindsym $mod+0xffc2 exec --no-startup-id brightnessctl set 10-%
 
 # Take a screenshot
 bindsym Print exec "gnome-screenshot -ac"
+
+
+# Open up clipboard history
+bindsym $mod+c exec --no-startup-id xfce4-clipman-history
+
