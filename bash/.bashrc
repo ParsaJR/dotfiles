@@ -104,6 +104,8 @@ function cheat() {
 	curl cheat.sh/$1
 }
 
+set -o vi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
