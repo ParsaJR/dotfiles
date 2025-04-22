@@ -43,7 +43,7 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>b",
+			"t",
 			function()
 				toggle_neotree(function()
 					require("neo-tree.command").execute({

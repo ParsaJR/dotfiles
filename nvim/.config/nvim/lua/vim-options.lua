@@ -24,8 +24,8 @@ vim.diagnostic.config({
 helper.Map("n", "<leader>cb", ":%y+<CR>")
 
 -- Keymap for tab-Navigation
-vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Tab>", ":bn<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-Tab>", ":bp<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", ":tabclose<CR>", { noremap = true, silent = true })
 
@@ -36,8 +36,8 @@ helper.Map("n", "<M-Right>", ":+tabmove<CR>")
 helper.Map("n", "<M-Left>", ":-tabmove<CR>")
 
 -- moving lines to the left and right more easily
-helper.Map("v", "<", "<gv")
-helper.Map("v", ">", ">gv")
+helper.Map("v", ">", "<gv")
+helper.Map("v", "<", ">gv")
 
 -- Customizing the tabline label
 vim.api.nvim_set_hl(0, "npmbuffer", { foreground = "#f69220", background = "#000000" })
@@ -68,7 +68,7 @@ vim.o.showtabline = 2
 --Autosave by FocusLost
 vim.api.nvim_create_augroup("autosave_buffer", { clear = true })
 
-vim.api.nvim_create_autocmd({ "FocusLost", "TabLeave" }, {
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
 	group = "autosave_buffer",
 	pattern = "*",
 	callback = function()

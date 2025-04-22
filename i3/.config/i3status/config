@@ -1,5 +1,6 @@
 general {
 	interval = 5
+        output_format = i3bar
 }
 
 order += "path_exists VPN"
@@ -10,10 +11,15 @@ order += "disk /"
 order += "volume master"
 order += "battery 0"
 order += "tztime Tehran"
+order += "tztime holder__hey_man"
 
 tztime Tehran {
         format = "%Y-%m-%d %H:%M:%S"
 	timezone = "Asia/Tehran"
+}
+
+tztime holder__hey_man {
+        format = "holder__hey_man"
 }
 
 memory {

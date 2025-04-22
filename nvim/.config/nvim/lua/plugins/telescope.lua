@@ -6,6 +6,7 @@ return {
 		config = function()
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader><leader>", builtin.find_files, {})
+			vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 		end,
 	},
 	{
@@ -36,12 +37,12 @@ return {
 				defaults = {
 					mappings = {
 						i = {
-						--	["<CR>"] = require("telescope.actions").file_tab,
+							--	["<CR>"] = require("telescope.actions").file_tab,
 						},
 					},
 					file_ignore_patterns = {
-						"node_modules"
-					}
+						"node_modules",
+					},
 				},
 			})
 			-- To get ui-select loaded and working with telescope, you need to call
