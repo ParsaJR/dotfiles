@@ -51,10 +51,11 @@ function hey_man {
     json_array=$(update_holder holder__hey_man "$json")
 }
 
-i3status | (read line; echo "$line"; read line ; echo "$line" ; read line ; echo "$line" ; while true
-do
-  read line
-  json_array="$(echo $line | sed -e 's/^,//')"
-  hey_man
-  echo ",$json_array" 
-done)
+i3status
+# (read line; echo "$line"; read line ; echo "$line" ; read line ; echo "$line" ; while true
+# do
+#   read line
+#   json_array="$(echo $line | sed -e 's/^,//')"
+#   hey_man
+#   echo ",$json_array" 
+# done)
