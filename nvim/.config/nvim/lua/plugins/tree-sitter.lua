@@ -17,6 +17,7 @@ return {
 				"dockerfile",
 				"gitignore",
 				"markdown",
+				"vue",
 			},
 			auto_install = false,
 			sync_install = false,

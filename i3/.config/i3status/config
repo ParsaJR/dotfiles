@@ -8,10 +8,10 @@ order += "ethernet _first_"
 order += "wireless _first_"
 order += "memory"
 order += "disk /"
+order += "tztime holder__hey_man"
 order += "volume master"
 order += "battery 0"
 order += "tztime Tehran"
-order += "tztime holder__hey_man"
 
 tztime Tehran {
         format = "%Y-%m-%d %H:%M:%S"

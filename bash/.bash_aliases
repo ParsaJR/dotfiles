@@ -36,3 +36,9 @@ alias nvim='nvim.appimage'
 alias helix='hx'
 
 alias source='source .bashrc'
+
+alias pn='pnpm'
+
+alias gs='git status'
+
+alias update='sudo apt update && sudo apt upgrade'

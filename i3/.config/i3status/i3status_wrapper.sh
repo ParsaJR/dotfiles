@@ -45,17 +45,15 @@ function remove_holder {
 }
 
 function hey_man {
-    local havaqom=$(hava Qom)
-    echo $havaqom
-    local json='{ "full_text": "'$havaqom'", "color": "#00FF00" }'
+    local havaqom="Garme"
+    local json='{"full_text": "'$havaqom'", "color": "#00FF00" }'
     json_array=$(update_holder holder__hey_man "$json")
 }
 
-i3status
-# (read line; echo "$line"; read line ; echo "$line" ; read line ; echo "$line" ; while true
-# do
-#   read line
-#   json_array="$(echo $line | sed -e 's/^,//')"
-#   hey_man
-#   echo ",$json_array" 
-# done)
+i3status | (read line; echo "$line"; read line ; echo "$line" ; read line ; echo "$line" ; while true
+do
+  read line
+  json_array="$(echo $line | sed -e 's/^,//')"
+  hey_man
+  echo ",$json_array" 
+done)
