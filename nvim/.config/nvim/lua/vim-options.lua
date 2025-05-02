@@ -23,6 +23,9 @@ vim.diagnostic.config({
 -- Copy entire buffer
 helper.Map("n", "<leader>cb", ":%y+<CR>")
 
+-- Select the entire buffer
+helper.Map("n","<leader>sb","ggVG")
+
 -- Keymap for tab-Navigation
 vim.keymap.set("n", "<Tab>", ":bn<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Tab>", ":bp<CR>", { noremap = true, silent = true })
