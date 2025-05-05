@@ -244,3 +244,5 @@ bindsym Print exec "gnome-screenshot -ac"
 # Open up clipboard history
 bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
+# remap caps lock to esc
+exec --no-startup-id setxkbmap -option caps:escape
