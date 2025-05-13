@@ -24,7 +24,7 @@ vim.diagnostic.config({
 helper.Map("n", "<leader>cb", ":%y+<CR>")
 
 -- Select the entire buffer
-helper.Map("n","<leader>sb","ggVG")
+helper.Map("n", "<leader>sb", "ggVG")
 
 -- Keymap for tab-Navigation
 vim.keymap.set("n", "<Tab>", ":bn<CR>", { noremap = true, silent = true })
@@ -54,11 +54,14 @@ function _G.get_tabline_string()
 		local buffername_short = vim.fn.fnamemodify(buffername, ":t")
 		-- check if it is the active tab
 		if tabnum == vim.fn.tabpagenr() then
-			tabline_string = tabline_string .. "%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		elseif helper.GetBufferType(tabnum) == "terminal" then
-			tabline_string = tabline_string .. "%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		else
-			tabline_string = tabline_string .. "%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
 	end
 	tabline_string = tabline_string .. "%#TabLineFill#"
@@ -75,7 +78,8 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 	group = "autosave_buffer",
 	pattern = "*",
 	callback = function()
-		if vim.bo.modified then
+		local buffername = vim.api.nvim_buf_get_name(0)
+		if vim.bo.modified and string.len(buffername) ~= 0 then
 			vim.cmd("w")
 		end
 	end,
