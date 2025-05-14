@@ -1,8 +1,11 @@
 [user]
 	name = ParsaJR
 	email = parsajr@proton.me
+	signingKey = .ssh/id_ed25519.pub
 [alias]
 	s = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	c = !git add -A && git commit -m
+[gpg]
+	format = ssh
