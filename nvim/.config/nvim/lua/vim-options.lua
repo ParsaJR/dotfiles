@@ -5,7 +5,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.o.winborder = "rounded"
 
 -- General
-vim.cmd("set number")
+vim.cmd("set number relativenumber")
 vim.g.mapleader = " "
 
 vim.diagnostic.config({
