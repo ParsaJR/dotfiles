@@ -252,4 +252,4 @@ bindsym Print exec "gnome-screenshot -ac"
 bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
 # remap caps lock to esc
-exec --no-startup-id setxkbmap -option caps:swapescape
+exec_always --no-startup-id setxkbmap -option caps:swapescape
