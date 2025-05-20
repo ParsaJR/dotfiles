@@ -29,9 +29,9 @@ set $mod Mod4
 gaps inner 5px
 
 # run some apps on startup
-exec --no-startup-id i3-msg 'workspace 1:Web; exec firefox'
-exec --no-startup-id i3-msg 'workspace 2:Terminal; exec i3-sensible-terminal'
-
+exec --no-startup-id sh -c 'sleep 1 && i3-msg "workspace 1:Web" && firefox'
+exec --no-startup-id sh -c 'sleep 2 && i3-msg "workspace 9:Pomo" && firefox --new-window https://lazy-guy.github.io/tomodoro/index.html'
+exec --no-startup-id sh -c 'sleep 3 && i3-msg "workspace 2:Terminal" && i3-sensible-terminal'
 
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id flatpak run com.tomjwatson.Emote
@@ -148,7 +148,7 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9:Pomo"
 set $ws10 "10"
 
 # switch to workspace
@@ -253,3 +253,5 @@ bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
 # remap caps lock to esc
 exec_always --no-startup-id setxkbmap -option caps:swapescape
+
+exec i3-msg "workspace 2:Terminal"
