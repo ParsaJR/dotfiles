@@ -29,9 +29,9 @@ set $mod Mod4
 gaps inner 5px
 
 # run some apps on startup
-exec --no-startup-id sh -c 'sleep 1 && i3-msg "workspace 1:Web" && firefox'
+exec --no-startup-id sh -c 'sleep 1 && i3-msg "workspace 1:Web" && firefox --new-window &'
 exec --no-startup-id sh -c 'sleep 2 && i3-msg "workspace 9:Pomo" && firefox --new-window https://lazy-guy.github.io/tomodoro/index.html'
-exec --no-startup-id sh -c 'sleep 3 && i3-msg "workspace 2:Terminal" && i3-sensible-terminal'
+exec --no-startup-id sh -c 'sleep 3 && i3-msg "workspace 2:Terminal" && i3-sensible-terminal &'
 
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id flatpak run com.tomjwatson.Emote
@@ -216,12 +216,18 @@ bar {
 	position bottom
 	strip_workspace_numbers yes
         colors {
-                background #000000
-                statusline #ffffff
-                focused_workspace  #000000 #404040 #ffffff
-                active_workspace   #000000 #5f676a #ffffff
-                inactive_workspace #000000 #000000 #ffffff
-        }
+        background #000000
+        statusline #ffffff
+        separator #333333
+
+
+
+        focused_workspace  #222222 #333333 #ffffff
+        active_workspace   #555555 #666666 #ffffff
+        inactive_workspace #111111 #000000 #888888
+        urgent_workspace   #ff0000 #880000 #ffffff
+        binding_mode       #ff0000 #880000 #ffffff
+    }
 }
 
 # Keyboard input config for English/Persian
