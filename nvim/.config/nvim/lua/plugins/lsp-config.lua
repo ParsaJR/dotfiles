@@ -19,6 +19,7 @@ return {
 					"cssls",
 					"gopls",
 				},
+				automatic_enable = false
 			})
 		end,
 	},
