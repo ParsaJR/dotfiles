@@ -29,9 +29,8 @@ set $mod Mod4
 gaps inner 5px
 
 # run some apps on startup
-exec --no-startup-id i3-msg 'workspace 1:Web; exec firefox --new-widnow;workspace 2:Terminal'
-exec --no-startup-id i3-msg 'exec i3-sensible-terminal;workspace 9:Pomodoro'
-exec --no-startup-id i3-msg 'exec firefox --new-window'
+exec --no-startup-id i3-msg 'workspace 1:Web; exec firefox --new-widnow &'
+exec --no-startup-id i3-msg 'workspace 2:Terminal; exec i3-sensible-terminal &'
 
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id flatpak run com.tomjwatson.Emote
@@ -83,6 +82,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # search the web
 bindsym $mod+grave exec --no-startup-id /home/parsa/scripts/dmenu-firefox-search.sh 
+# Dispaly
+bindsym $mod+F8 exec --no-startup-id /home/parsa/scripts/dmenu-displays.sh
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -259,6 +260,6 @@ bindsym Print exec "gnome-screenshot -ac"
 bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
 # remap caps lock to esc
-exec setxkbmap -option caps:swapescape
+exec_always setxkbmap -option caps:swapescape
 
 exec i3-msg "workspace 2:Terminal"

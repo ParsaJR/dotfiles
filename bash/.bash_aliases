@@ -42,3 +42,5 @@ alias pn='pnpm'
 alias gs='git status'
 
 alias update='sudo apt update && sudo apt upgrade'
+
+alias displays='xrandr | grep " connected"'
