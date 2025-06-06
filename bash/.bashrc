@@ -239,3 +239,7 @@ if type complete &>/dev/null; then
 fi
 ###-end-pnpm-completion-###
 
+
+# >>>> Vagrant command completion (start)
+. /opt/vagrant/embedded/gems/gems/vagrant-2.4.6/contrib/bash/completion.sh
+# <<<<  Vagrant command completion (end)
