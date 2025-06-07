@@ -6,6 +6,7 @@ vim.o.winborder = "rounded"
 
 -- General
 vim.cmd("set number relativenumber")
+vim.cmd("set scrolloff=5")
 vim.g.mapleader = " "
 
 vim.diagnostic.config({
