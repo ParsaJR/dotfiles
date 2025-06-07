@@ -9,9 +9,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# Neovim alias
-alias nvim='nvim.appimage'
-
 # source bashrc
 alias source='source .bashrc'
 

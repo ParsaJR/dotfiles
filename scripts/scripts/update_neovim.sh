@@ -7,23 +7,28 @@ NVIM_GH_URL="https://github.com/neovim/neovim/releases/latest"
 LATEST_VERSION=$(curl -s -L $NVIM_GH_URL | grep -o 'href="[^"]*' | grep -o 'releases/tag/v.*' | grep -o 'v.*')
 
 # Get the current version installed
-CURRENT_VERSION=$(nvim.appimage --version | grep -o 'NVIM .*' | grep -o 'v.*')
+CURRENT_VERSION=$(nvim --version | grep -o 'NVIM .*' | grep -o 'v.*')
 
 # Path to download the nvim appimage
-DOWNLOAD_LINK="https://github.com/neovim/neovim/releases/download/$LATEST_VERSION/nvim-linux-x86_64.appimage"
+DOWNLOAD_LINK="https://github.com/neovim/neovim/releases/download/$LATEST_VERSION/nvim-linux-x86_64.tar.gz"
 
-echo "Current Neovim version : $CURRENT_VERSION"
-echo "Latest Neovim version : $LATEST_VERSION"
+echo "Your Current Neovim version: $CURRENT_VERSION"
+echo "The Latest Neovim version on Github: $LATEST_VERSION"
 read -p "Looks good? " -n 1 -r
 echo
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -s -L -o /usr/local/bin/nvim.appimage $DOWNLOAD_LINK
-	chmod +x /usr/local/bin/nvim.appimage
+	curl -s -L -o nvim-linux-x86_64.tar.gz $DOWNLOAD_LINK
+	tar -xzf nvim-linux-x86_64.tar.gz
+	cd nvim-linux-x86_64/
+	sudo cp -R bin share lib /usr
 else
 	echo "Closing..."
 	exit 0;
 fi
 
+
+rm -R ../nvim-linux-x86_64
+rm ../nvim-linux-x86_64.tar.gz
 
 echo "Done!"
