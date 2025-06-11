@@ -55,7 +55,7 @@ return {
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					pattern = "*.go",
 					callback = function()
-						local params = vim.lsp.util.make_range_params(0,"utf-8")
+						local params = vim.lsp.util.make_range_params(0, "utf-8")
 						params.context = { only = { "source.organizeImports" } }
 						-- buf_request_sync defaults to a 1000ms timeout. Depending on your
 						-- machine and codebase, you may want longer. Add an additional
@@ -68,7 +68,7 @@ return {
 							for _, r in pairs(res.result or {}) do
 								if r.edit then
 									local enc = (vim.lsp.get_client_by_id(cid) or {})
-									.offset_encoding or "utf-16"
+									    .offset_encoding or "utf-16"
 									vim.lsp.util.apply_workspace_edit(r.edit, enc)
 								end
 							end
@@ -159,6 +159,11 @@ return {
 					"scss",
 					"pcss",
 					"postcss",
+				},
+				settings = {
+					rulesCustomizations = {
+						{ rule = "@stylistic/*", severity = "off" },
+					},
 				},
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {

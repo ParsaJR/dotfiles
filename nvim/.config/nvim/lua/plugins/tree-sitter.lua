@@ -7,6 +7,7 @@ return {
 		configs.setup({
 			ensure_installed = {
 				"lua",
+				"typescript",
 				"html",
 				"css",
 				"javascript",
