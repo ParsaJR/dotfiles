@@ -17,7 +17,7 @@ set $mod Mod4
 
 gaps inner 5px
 
-exec_always --no-startup-id i3-msg "workspace 2:Terminal; append_layout /home/parsa/.config/i3/workspace-2.json"
+exec --no-startup-id i3-msg "workspace 2:Terminal; append_layout /home/parsa/.config/i3/workspace-2.json"
 
 # run some apps on startup
 exec --no-startup-id i3-msg 'workspace 1:Web; exec firefox --new-widnow &'
