@@ -244,4 +244,10 @@ fi
 . /opt/vagrant/embedded/gems/gems/vagrant-2.4.6/contrib/bash/completion.sh
 # <<<<  Vagrant command completion (end)
 
-#eval $(minikube -p minikube docker-env)
+eval $(minikube -p minikube docker-env)
+
+if command -v minikube &>/dev/null
+then
+  eval "$(minikube completion bash)"
+fi
+

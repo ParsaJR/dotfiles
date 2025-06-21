@@ -15,6 +15,8 @@ alias source='source .bashrc'
 # Update the packages
 alias update='sudo apt update && sudo apt upgrade'
 
+# K8
+alias kubectl="minikube kubectl --"
 # miscellaneous
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias unfuckaudio='pulseaudio -k'
