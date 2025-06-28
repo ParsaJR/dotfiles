@@ -11,4 +11,4 @@ set scrolloff=5
 " Do incremental searching.
 set incsearch
 
- map Q gq
+map Q gq
