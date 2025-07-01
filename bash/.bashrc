@@ -104,7 +104,11 @@ function cheat() {
 	curl cheat.sh/$1
 }
 
+# Bash vi mode
 set -o vi
+
+# Map esc to caps lock
+setxkbmap -option caps:swapescape
 
 export EDITOR='vim'
 # enable programmable completion features (you don't need to enable
