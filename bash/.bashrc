@@ -107,8 +107,17 @@ function cheat() {
 # Bash vi mode
 set -o vi
 
-# Map esc to caps lock
+# Swap esc to caps lock
 setxkbmap -option caps:swapescape
+
+# correct simple mistakes please
+shopt -s cdspell
+
+# Auto cd to directory
+shopt -s autocd
+
+# auto completion for empty line
+shopt -s no_empty_cmd_completion
 
 export EDITOR='vim'
 # enable programmable completion features (you don't need to enable
