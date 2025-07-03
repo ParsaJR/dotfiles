@@ -252,4 +252,10 @@ bindsym Print exec "gnome-screenshot -ac"
 # Open up clipboard history
 bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
-# remap caps lock to esc
+
+
+exec --no-startup-id gnome-terminal --class=top -- bash -c 'top'
+
+for_window [class="top"] floating enable, move scratchpad
+
+bindsym $mod+p scratchpad show
