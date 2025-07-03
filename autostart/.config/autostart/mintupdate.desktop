@@ -156,4 +156,5 @@ Type=Application
 Categories=
 X-GNOME-Autostart-Delay=20
 X-MATE-Autostart-Delay=20
-X-GNOME-Autostart-enabled=false
+X-i3-Autostart-enabled=false
+Hidden=true

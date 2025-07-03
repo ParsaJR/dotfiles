@@ -74,3 +74,4 @@ Terminal=false
 Type=Application
 Categories=
 X-GNOME-Autostart-enabled=false
+Hidden=true
