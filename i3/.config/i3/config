@@ -61,6 +61,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Top command on the scratchpad
+exec --no-startup-id gnome-terminal --class=topcmd -- bash -c 'top'
+
+for_window [class="topcmd"] floating enable, move scratchpad
+
+bindsym $mod+p scratchpad show
+
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
@@ -254,8 +261,3 @@ bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
 
 
-exec --no-startup-id gnome-terminal --class=top -- bash -c 'top'
-
-for_window [class="top"] floating enable, move scratchpad
-
-bindsym $mod+p scratchpad show
