@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Autojump
+. /usr/share/autojump/autojump.sh
+
 # If not running interactively, don't do anything
 case $- in
 *i*) ;;
@@ -260,9 +263,9 @@ fi
 . /opt/vagrant/embedded/gems/gems/vagrant-2.4.6/contrib/bash/completion.sh &> /dev/null
 # <<<<  Vagrant command completion (end)
 
-eval $(minikube -p minikube docker-env &> /dev/null)
-
-if command -v minikube &>/dev/null
-then
-  eval "$(minikube completion bash)"
-fi
+# eval $(minikube -p minikube docker-env &> /dev/null)
+#
+# if command -v minikube &>/dev/null
+# then
+#   eval "$(minikube completion bash)"
+# fi
