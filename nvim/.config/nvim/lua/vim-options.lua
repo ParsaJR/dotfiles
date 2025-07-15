@@ -72,7 +72,7 @@ end
 vim.o.tabline = "%!v:lua.get_tabline_string()"
 vim.o.showtabline = 2
 
---Autosave by FocusLost
+-- Autosave by FocusLost
 vim.api.nvim_create_augroup("autosave_buffer", { clear = true })
 
 vim.api.nvim_create_autocmd({ "FocusLost" }, {
@@ -80,7 +80,7 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 	pattern = "*",
 	callback = function()
 		local buffername = vim.api.nvim_buf_get_name(0)
-		if vim.bo.modified and string.len(buffername) ~= 0 then
+		if vim.bo.modified and string.len(buffername) ~= 0 and vim.bo.buftype == ''  then
 			vim.cmd("w")
 		end
 	end,

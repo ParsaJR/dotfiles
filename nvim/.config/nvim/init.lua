@@ -1,3 +1,4 @@
+require("vim-options")
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -15,7 +16,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("vim-options")
 -- Setup lazy.nvim
 require("lazy").setup("plugins", {
 	-- automatically check for plugin updates
