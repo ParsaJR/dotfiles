@@ -1,0 +1,7 @@
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+map p print
+map R rotate
+map i recolor
+map d scroll half-down
+map u scroll half-up
