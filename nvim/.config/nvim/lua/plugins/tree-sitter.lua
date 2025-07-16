@@ -18,6 +18,8 @@ return {
 				"dockerfile",
 				"gitignore",
 				"markdown",
+				"vimdoc",
+				"vim",
 			},
 			auto_install = false,
 			sync_install = false,
