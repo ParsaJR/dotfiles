@@ -10,11 +10,11 @@
 
 # In order to make this example work you need to add
 # order += "tztime holder__hey_man"
-# and 
+# and
 # tztime holder__hey_man {
 #        format = "holder__hey_man"
 # }
-# in i3staus config 
+# in i3staus config
 
 # Don't forget that i3status config should contain:
 # general {
@@ -32,28 +32,42 @@
 # You can easily add multiple custom modules using additional "holders"
 
 function update_holder {
-
-  local instance="$1"
-  local replacement="$2"
-  echo "$json_array" | jq --argjson arg_j "$replacement" "(.[] | (select(.instance==\"$instance\"))) |= \$arg_j" 
+	# the parameter that has to be replaced.
+	local instance="$1"
+	# the replacement text
+	local replacement="$2"
+	echo "$json_array" | jq --argjson arg_j "$replacement" "(.[] | (select(.instance==\"$instance\"))) |= \$arg_j"
 }
 
 function remove_holder {
-
-  local instance="$1"
-  echo "$json_array" | jq "del(.[] | (select(.instance==\"$instance\")))"
+	local instance="$1"
+	echo "$json_array" | jq "del(.[] | (select(.instance==\"$instance\")))"
 }
 
 function hey_man {
-    local havaqom="Garme"
-    local json='{"full_text": "'$havaqom'", "color": "#00FF00" }'
-    json_array=$(update_holder holder__hey_man "$json")
+	local havaqom="Garme"
+	local json='{"full_text": "'$havaqom'", "color": "#00FF00" }'
+	json_array=$(update_holder holder__hey_man "$json")
 }
 
-i3status | (read line; echo "$line"; read line ; echo "$line" ; read line ; echo "$line" ; while true
-do
-  read line
-  json_array="$(echo $line | sed -e 's/^,//')"
-  hey_man
-  echo ",$json_array" 
-done)
+function cputemp {
+	local cputemp=$(acpi -t | head --lines=1 | awk '{print "CPU: " $4 "°C"}')
+	local json='{"full_text": "'$cputemp'", "color": "#FFA500"}'
+	json_array=$(update_holder holder_cputemp "$json")
+}
+
+i3status | (
+	read line
+	echo "$line"
+	read line
+	echo "$line"
+	read line
+	echo "$line"
+	while true; do
+		read line
+		json_array="$(echo $line | sed -e 's/^,//')"
+		hey_man
+		cputemp
+		echo ",$json_array"
+	done
+)

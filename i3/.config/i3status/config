@@ -9,6 +9,7 @@ order += "wireless _first_"
 order += "memory"
 order += "disk /"
 order += "tztime holder__hey_man"
+order += "tztime holder_cputemp"
 order += "volume master"
 order += "battery 0"
 order += "tztime Tehran"
@@ -20,6 +21,10 @@ tztime Tehran {
 
 tztime holder__hey_man {
         format = "holder__hey_man"
+}
+
+tztime holder_cputemp {
+        format = "holder_cputemp"
 }
 
 memory {
