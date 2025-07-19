@@ -12,6 +12,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"bashls",
+					"clangd",
 					"ts_ls",
 					"vue_ls",
 					"html",
@@ -201,6 +202,10 @@ return {
 					vim.cmd("tabmove $")
 				end
 			end
+
+			lspconfig.clangd.setup({
+				capabilities = capabilities
+			})
 
 			vim.keymap.set("n", "<F5>", RunDev, { noremap = true, silent = true })
 			vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
