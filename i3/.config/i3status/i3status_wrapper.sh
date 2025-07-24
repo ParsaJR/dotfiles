@@ -51,7 +51,7 @@ function hey_man {
 }
 
 function cputemp {
-	local cputemp=$(acpi -t | head --lines=1 | awk '{print "CPU: " $4 "°C"}')
+	local cputemp=$(sensors | grep "Package id 0:" | awk '{ gsub("+",""); {print $4}}')
 	local json='{"full_text": "'$cputemp'", "color": "#FFA500"}'
 	json_array=$(update_holder holder_cputemp "$json")
 }
