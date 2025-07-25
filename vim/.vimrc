@@ -1,7 +1,6 @@
 let mapleader = " "
 
 set number
-set syntax on
 set autoindent
 set clipboard+=unnamedplus
 

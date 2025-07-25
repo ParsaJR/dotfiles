@@ -22,7 +22,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias unfuckaudio='pulseaudio -k'
 alias runmongo='docker run --name mymongo -d -p 27017:27017 mongo:latest'
 alias server='ssh parsajr@147.160.139.143'
-alias lab='ssh parsajr@192.168.1.50'
+alias lab='ssh parsajr@10.0.0.251 -p 2280'
 alias pn='pnpm'
 alias displays='xrandr | grep " connected"'
 alias c='clear'
