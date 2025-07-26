@@ -84,6 +84,8 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+grave exec --no-startup-id /home/parsa/scripts/dmenu-firefox-search.sh 
 # Dispaly
 bindsym $mod+F8 exec --no-startup-id /home/parsa/scripts/dmenu-displays.sh
+# Cpu intensive apps
+bindsym $mod+F1 exec --no-startup-id /home/parsa/scripts/cpu-intensive-process.sh
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -258,6 +260,3 @@ bindsym Print exec "gnome-screenshot -ac"
 
 # Open up clipboard history
 bindsym $mod+c exec --no-startup-id xfce4-clipman-history
-
-
-
