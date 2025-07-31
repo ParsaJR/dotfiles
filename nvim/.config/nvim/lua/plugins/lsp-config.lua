@@ -19,6 +19,7 @@ return {
 					"tailwindcss",
 					"cssls",
 					"gopls",
+					"emmet_language_server",
 				},
 				automatic_enable = false
 			})
