@@ -26,6 +26,7 @@ exec --no-startup-id i3-msg 'workspace 2:Terminal; exec i3-sensible-terminal &'
 exec --no-startup-id i3-msg 'workspace 2:Terminal; exec i3-sensible-terminal &'
 
 exec --no-startup-id xfce4-clipman &
+exec --no-startup-id gromit-mpx &
 exec --no-startup-id flatpak run com.tomjwatson.Emote &
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
