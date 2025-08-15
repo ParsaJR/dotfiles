@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # This i3status wrapper allows to add custom information in any position of the statusline
-#!/usr/bin/env bash
 
 # This i3status wrapper allows to add custom information in any position of the statusline
 # It was developed for i3bar (JSON format)
@@ -39,21 +38,16 @@ function update_holder {
 	echo "$json_array" | jq --argjson arg_j "$replacement" "(.[] | (select(.instance==\"$instance\"))) |= \$arg_j"
 }
 
-function remove_holder {
-	local instance="$1"
-	echo "$json_array" | jq "del(.[] | (select(.instance==\"$instance\")))"
-}
-
-function hey_man {
-	local havaqom="Garme"
-	local json='{"full_text": "'$havaqom'", "color": "#00FF00" }'
-	json_array=$(update_holder holder__hey_man "$json")
-}
-
 function cputemp {
 	local cputemp=$(sensors | grep "Package id 0:" | awk '{ gsub("+",""); {print $4}}')
 	local json='{"full_text": "'$cputemp'", "color": "#FFA500"}'
 	json_array=$(update_holder holder_cputemp "$json")
+}
+
+function uptimefunc {
+	local uptimetxt=$(echo -n "Uptime: " && uptime | awk '{print $1}')
+	local json='{"full_text": "'$uptimetxt'", "color": "#ffffff"}'
+	json_array=$(update_holder holder_uptime "$json")
 }
 
 i3status | (
@@ -66,8 +60,8 @@ i3status | (
 	while true; do
 		read line
 		json_array="$(echo $line | sed -e 's/^,//')"
-		hey_man
 		cputemp
+		uptimefunc
 		echo ",$json_array"
 	done
 )
