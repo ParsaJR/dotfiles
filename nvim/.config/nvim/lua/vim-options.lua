@@ -39,10 +39,6 @@ helper.Map("t", "<ESC>", "<C-\\><C-N>")
 helper.Map("n", "<M-Right>", ":+tabmove<CR>")
 helper.Map("n", "<M-Left>", ":-tabmove<CR>")
 
--- moving lines to the left and right more easily
-helper.Map("v", ">", "<gv")
-helper.Map("v", "<", ">gv")
-
 -- Customizing the tabline label
 vim.api.nvim_set_hl(0, "npmbuffer", { foreground = "#f69220", background = "#000000" })
 function _G.get_tabline_string()
