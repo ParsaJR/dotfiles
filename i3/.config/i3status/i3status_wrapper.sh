@@ -45,7 +45,7 @@ function cputemp {
 }
 
 function uptimefunc {
-	local uptimetxt=$(echo -n "Uptime: " && uptime | awk '{print $1}')
+	local uptimetxt=$(echo -n "Uptime: " && uptime -p | awk '{print $2,$3}')
 	local json='{"full_text": "'$uptimetxt'", "color": "#ffffff"}'
 	json_array=$(update_holder holder_uptime "$json")
 }
