@@ -19,8 +19,9 @@ return {
 					"cssls",
 					"gopls",
 					"emmet_language_server",
+					"pylsp",
 				},
-				automatic_enable = false
+				automatic_enable = false,
 			})
 		end,
 	},
@@ -46,6 +47,9 @@ return {
 				},
 				capabilities = capabilities,
 			})
+			lspconfig.pylsp.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 				settings = {
@@ -69,7 +73,7 @@ return {
 							for _, r in pairs(res.result or {}) do
 								if r.edit then
 									local enc = (vim.lsp.get_client_by_id(cid) or {})
-									    .offset_encoding or "utf-16"
+									.offset_encoding or "utf-16"
 									vim.lsp.util.apply_workspace_edit(r.edit, enc)
 								end
 							end
@@ -201,7 +205,7 @@ return {
 			end
 
 			lspconfig.clangd.setup({
-				capabilities = capabilities
+				capabilities = capabilities,
 			})
 
 			vim.keymap.set("n", "<F5>", RunDev, { noremap = true, silent = true })
