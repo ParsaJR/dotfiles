@@ -11,7 +11,6 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"bashls",
 					"clangd",
 					"ts_ls",
 					"vue_ls",
@@ -125,9 +124,6 @@ return {
 					--- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
 					variables = {},
 				},
-			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
 			})
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
