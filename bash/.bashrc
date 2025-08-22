@@ -107,9 +107,6 @@ function cheat() {
 	curl cheat.sh/$1
 }
 
-# Bash vi mode
-set -o vi
-
 # Swap esc to caps lock
 setxkbmap -option caps:swapescape
 
