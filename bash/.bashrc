@@ -260,8 +260,8 @@ fi
 
 #eval $(minikube -p minikube docker-env)
 
-if command -v minikube &> /dev/null; then
-	eval "$(minikube completion bash)"
-fi
+# if command -v minikube &> /dev/null; then
+# 	eval "$(minikube completion bash)"
+# fi
 
 eval "$(kubectl completion bash 2> /dev/null)"
