@@ -26,7 +26,6 @@ return {
 			local confirm = cmp.sync(function(fallback)
 				local e = cmp.core.view:get_selected_entry()
 
-
 				if e and e.source.name == "nvim_lsp_signature_help" then
 					fallback()
 				else
@@ -47,8 +46,10 @@ return {
 				},
 				-- The keybinding for completion window
 				mapping = cmp.mapping.preset.insert({
-					["<C-k>"] = cmp.mapping.scroll_docs(-4),
-					["<C-j>"] = cmp.mapping.scroll_docs(4),
+					["<C-f>"] = cmp.mapping.scroll_docs(-4),
+					["<C-b>"] = cmp.mapping.scroll_docs(4),
+					["<C-j>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+					["<C-k>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = confirm, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -59,8 +60,6 @@ return {
 					{ name = "nvim_lsp_signature_help" },
 				}),
 			})
-
-
 		end,
 	},
 }

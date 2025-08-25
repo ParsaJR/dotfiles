@@ -6,6 +6,7 @@ return {
 		end,
 	},
 	{
+		-- Tabout used for jumping out of the pair of signs in Insert Mode.
 		"abecodes/tabout.nvim",
 		lazy = false,
 		config = function()

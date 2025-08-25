@@ -21,12 +21,21 @@ return {
 				"vimdoc",
 				"vim",
 				"c",
-				"python"
+				"python",
 			},
 			auto_install = false,
 			sync_install = false,
 			highlight = { enable = true },
 			indent = { enable = true },
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<C-space>", -- set to `false` to disable one of the mappings
+					node_incremental = "<C-space>",
+					scope_incremntal = false,
+					node_decremental = "<bs>",
+				},
+			},
 		})
 	end,
 }
