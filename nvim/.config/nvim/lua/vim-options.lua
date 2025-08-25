@@ -9,6 +9,14 @@ vim.cmd("set number relativenumber")
 vim.cmd("set scrolloff=5")
 vim.g.mapleader = " "
 
+-- Set path to include all sub directory files
+vim.cmd("set path+=**")
+-- This is needed for js projects where node_modules folder presents.
+-- i create an .exrc file in each javascript project so the vim's find command will not get stuck searching that.
+vim.cmd("set exrc")
+vim.cmd("set secure")
+vim.cmd("set wildmenu")
+
 vim.diagnostic.config({
 	-- Use the default configuration
 	virtual_lines = false,
@@ -39,6 +47,9 @@ helper.Map("t", "<ESC>", "<C-\\><C-N>")
 helper.Map("n", "<M-Right>", ":+tabmove<CR>")
 helper.Map("n", "<M-Left>", ":-tabmove<CR>")
 
+-- Select from bufferlist fast
+helper.Map("n", "gb", ":ls<CR>:b<space>")
+
 -- Customizing the tabline label
 vim.api.nvim_set_hl(0, "npmbuffer", { foreground = "#f69220", background = "#000000" })
 function _G.get_tabline_string()
@@ -51,14 +62,11 @@ function _G.get_tabline_string()
 		local buffername_short = vim.fn.fnamemodify(buffername, ":t")
 		-- check if it is the active tab
 		if tabnum == vim.fn.tabpagenr() then
-			tabline_string = tabline_string ..
-			"%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		elseif helper.GetBufferType(tabnum) == "terminal" then
-			tabline_string = tabline_string ..
-			"%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		else
-			tabline_string = tabline_string ..
-			"%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string .. "%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
 	end
 	tabline_string = tabline_string .. "%#TabLineFill#"
@@ -76,7 +84,7 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 	pattern = "*",
 	callback = function()
 		local buffername = vim.api.nvim_buf_get_name(0)
-		if vim.bo.modified and string.len(buffername) ~= 0 and vim.bo.buftype == ''  then
+		if vim.bo.modified and string.len(buffername) ~= 0 and vim.bo.buftype == "" then
 			vim.cmd("w")
 		end
 	end,
