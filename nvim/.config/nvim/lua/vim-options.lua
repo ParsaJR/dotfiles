@@ -11,11 +11,13 @@ vim.g.mapleader = " "
 
 -- Set path to include all sub directory files
 vim.cmd("set path+=**")
+
 -- This is needed for js projects where node_modules folder presents.
--- i create an .exrc file in each javascript project so the vim's find command will not get stuck searching that.
+-- i create an .exrc file in each javascript project so things liek vim's find command will not get stuck searching that.
 vim.cmd("set exrc")
 vim.cmd("set secure")
 vim.cmd("set wildmenu")
+helper.Map("n","<leader>t",":Lexplore<CR>:vertical resize 50<CR>")
 
 vim.diagnostic.config({
 	-- Use the default configuration
@@ -38,7 +40,7 @@ helper.Map("n", "<leader>sb", "ggVG")
 -- Keymap for tab-Navigation
 vim.keymap.set("n", "<Tab>", ":bn<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Tab>", ":bp<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", ":tabclose<CR>", { noremap = true, silent = true })
 
 -- Escape in terminal mode
