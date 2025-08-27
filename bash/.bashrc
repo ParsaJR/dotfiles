@@ -104,6 +104,11 @@ fi
 
 # cheatsheet
 function cheat() {
+	if (( $# == 0 )); then
+		echo -n "What cheatsheet do you want? "
+		read cheatsheet
+		$1 = cheatsheet
+	fi
 	curl cheat.sh/$1
 }
 
@@ -114,7 +119,7 @@ setxkbmap -option caps:swapescape
 xset s off
 xset -dpms
 
-# Key repeat rate 
+# Key repeat rate
 xset r rate 300 50
 
 # correct simple mistakes please
