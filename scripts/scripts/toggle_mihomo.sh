@@ -9,3 +9,7 @@ if [ "$(systemctl is-active "$SERVICE")" = "active" ]; then
 else
 	sudo systemctl start $SERVICE
 fi
+
+if [ $? -eq 0 ]; then
+	notify-send done!	
+fi
