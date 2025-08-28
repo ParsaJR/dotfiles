@@ -9,9 +9,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# source bashrc
-alias source='source .bashrc'
-
 # Update the packages
 alias update='sudo apt update && sudo apt upgrade'
 
