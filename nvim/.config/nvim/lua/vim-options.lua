@@ -17,7 +17,7 @@ vim.cmd("set path+=**")
 vim.cmd("set exrc")
 vim.cmd("set secure")
 vim.cmd("set wildmenu")
-helper.Map("n","<leader>t",":Lexplore<CR>:vertical resize 50<CR>")
+helper.Map("n", "<leader>t", ":Lexplore<CR>:vertical resize 50<CR>")
 
 vim.diagnostic.config({
 	-- Use the default configuration
@@ -90,4 +90,20 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 			vim.cmd("w")
 		end
 	end,
+})
+
+-- Filetypes to enable spellcheck
+local spell_types = { "text", "plaintex", "typst", "gitcommit", "markdown" }
+
+vim.opt.spell = false
+
+vim.api.nvim_create_augroup("Spellcheck", { clear = true })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	group = "Spellcheck",
+	pattern = spell_types,
+	callback = function()
+		vim.opt_local.spell = true
+	end,
+	desc = "Enable spell check for defined filetypes",
 })
