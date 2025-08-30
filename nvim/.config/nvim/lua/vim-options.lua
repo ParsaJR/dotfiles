@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 })
 
 -- Filetypes to enable spellcheck
-local spell_types = { "text", "plaintex", "typst", "gitcommit", "markdown" }
+local spell_types = { "gitcommit", "markdown" }
 
 vim.opt.spell = false
 
