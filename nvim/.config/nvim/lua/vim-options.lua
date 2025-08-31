@@ -38,8 +38,10 @@ helper.Map("n", "<leader>cb", ":%y+<CR>")
 helper.Map("n", "<leader>sb", "ggVG")
 
 -- Keymap for tab-Navigation
-vim.keymap.set("n", "<Tab>", ":bn<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<S-Tab>", ":bp<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "[b", ":bprevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "]b", ":bnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "]B", ":bfirst<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "]b", ":blast<CR>", { noremap = true, silent = true })
 -- vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", ":tabclose<CR>", { noremap = true, silent = true })
 
