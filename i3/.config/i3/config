@@ -79,12 +79,19 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-# search the web
+
+# search the web by keyword
 bindsym $mod+grave exec --no-startup-id /home/parsa/scripts/dmenu-firefox-search.sh 
-# Dispaly
+
+# Select the display to mirror
 bindsym $mod+F8 exec --no-startup-id /home/parsa/scripts/dmenu-displays.sh
-# Cpu intensive apps
+
+# Show cpu intensive apps at the time
 bindsym $mod+F1 exec --no-startup-id /home/parsa/scripts/cpu-intensive-process.sh
+
+# Book library 
+bindsym $mod+b exec --no-startup-id /home/parsa/scripts/dmenu-books.sh
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
