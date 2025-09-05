@@ -53,7 +53,7 @@ return {
 					pylsp = {
 						plugins = {
 							pycodestyle = {
-								ignore = {'E231'},
+								ignore = { "E231" },
 								maxLineLength = 100,
 							},
 						},
@@ -184,22 +184,36 @@ return {
 					})
 				end,
 			})
+
+			-- VUE_LS
 			local vue_language_server_path = vim.fn.expand("$MASON/packages")
 			    .. "/vue-language-server"
 			    .. "/node_modules/@vue/language-server"
-			lspconfig.ts_ls.setup({
+
+			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact",
+				"vue" }
+			local vue_plugin = {
+				name = "@vue/typescript-plugin",
+				location = vue_language_server_path,
+				languages = { "vue" },
+				configNamespace = "typescript",
+			}
+
+			local ts_ls_config = {
 				init_options = {
 					plugins = {
-						{
-							name = "@vue/typescript-plugin",
-							location = vue_language_server_path,
-							languages = { "vue" },
-						},
+						vue_plugin,
 					},
 				},
-				filetypes = { "typescript", "javascript", "vue" },
-			})
-			lspconfig.volar.setup({})
+				filetypes = tsserver_filetypes,
+			}
+
+			local vue_ls_config = {}
+
+			vim.lsp.config("vue_ls", vue_ls_config)
+			vim.lsp.config("ts_ls", ts_ls_config)
+			vim.lsp.enable({ "ts_ls", "vue_ls" })
+
 			-- check if the buffer is vue file? if is, open run the pnpm run dev
 			function RunDev()
 				local buffer = 0
