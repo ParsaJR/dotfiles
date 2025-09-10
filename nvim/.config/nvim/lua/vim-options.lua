@@ -66,11 +66,14 @@ function _G.get_tabline_string()
 		local buffername_short = vim.fn.fnamemodify(buffername, ":t")
 		-- check if it is the active tab
 		if tabnum == vim.fn.tabpagenr() then
-			tabline_string = tabline_string .. "%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#TabLineSel#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		elseif helper.GetBufferType(tabnum) == "terminal" then
-			tabline_string = tabline_string .. "%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#npmbuffer#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		else
-			tabline_string = tabline_string .. "%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
+			tabline_string = tabline_string ..
+			"%#TabLine#" .. " " .. tabnum .. ": " .. buffername_short .. " "
 		end
 	end
 	tabline_string = tabline_string .. "%#TabLineFill#"
@@ -83,7 +86,7 @@ vim.o.showtabline = 2
 -- Autosave by FocusLost
 vim.api.nvim_create_augroup("autosave_buffer", { clear = true })
 
-vim.api.nvim_create_autocmd({ "FocusLost" }, {
+vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
 	group = "autosave_buffer",
 	pattern = "*",
 	callback = function()
@@ -97,7 +100,8 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 -- Filetypes to enable spellcheck
 local spell_types = { "gitcommit", "markdown" }
 
-vim.opt.spell = false
+-- Disable spell check by default
+vim.opt_local.spell = false
 
 vim.api.nvim_create_augroup("Spellcheck", { clear = true })
 
