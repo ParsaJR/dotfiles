@@ -6,8 +6,7 @@ return {
 		end,
 	},
 	{
-		"tpope/vim-surround",
-		config = function()
-		end,
+		"tpope/vim-fugitive",
+		config = function() end,
 	},
 }

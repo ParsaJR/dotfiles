@@ -9,4 +9,8 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim" },
 		opts = {},
 	},
+	{
+		"tpope/vim-surround",
+		config = function() end,
+	},
 }
