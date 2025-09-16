@@ -7,6 +7,11 @@ return {
 	},
 	{
 		"tpope/vim-fugitive",
-		config = function() end,
+		config = function()
+			vim.cmd([[autocmd BufReadPost fugitive://* set bufhidden=delete"]])
+
+			vim.cmd([[set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P]])
+		end,
+
 	},
 }
