@@ -6,7 +6,7 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"williamboman/mason-lspconfig",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
@@ -29,9 +29,8 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
-			local mason_registry = require("mason-registry")
-			lspconfig.lua_ls.setup({
+			vim.lsp.enable("lua_ls")
+			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -47,7 +46,8 @@ return {
 				},
 				capabilities = capabilities,
 			})
-			lspconfig.pylsp.setup({
+			vim.lsp.enable("pylsp")
+			vim.lsp.config("pylsp", {
 				capabilities = capabilities,
 				settings = {
 					pylsp = {
@@ -60,7 +60,8 @@ return {
 					},
 				},
 			})
-			lspconfig.gopls.setup({
+			vim.lsp.enable("gopls")
+			vim.lsp.config("gopls", {
 				capabilities = capabilities,
 				settings = {
 					gopls = {
@@ -77,13 +78,11 @@ return {
 						-- argument after params if you find that you have to write the file
 						-- twice for changes to be saved.
 						-- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-						local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction",
-							params)
+						local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
 						for cid, res in pairs(result or {}) do
 							for _, r in pairs(res.result or {}) do
 								if r.edit then
-									local enc = (vim.lsp.get_client_by_id(cid) or {})
-									.offset_encoding or "utf-16"
+									local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
 									vim.lsp.util.apply_workspace_edit(r.edit, enc)
 								end
 							end
@@ -92,7 +91,8 @@ return {
 					end,
 				}),
 			})
-			lspconfig.html.setup({
+			vim.lsp.enable("html")
+			vim.lsp.config("html", {
 				capabilities = capabilities,
 				filetypes = { "html" },
 				init_options = {
@@ -101,7 +101,8 @@ return {
 					--	configurationSection = { "html", "css", "javascript", "vue" },
 				},
 			})
-			lspconfig.emmet_language_server.setup({
+			vim.lsp.enable("emmet_language_server")
+			vim.lsp.config("emmet_language_server", {
 				capabilities = capabilities,
 				filetypes = {
 					"css",
@@ -139,14 +140,14 @@ return {
 					variables = {},
 				},
 			})
-			lspconfig.tailwindcss.setup({
+			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
-			lspconfig.cssls.setup({
+			vim.lsp.config("cssls", {
 				capabilities = capabilities,
 				filetypes = { "css", "scss", "less" },
 			})
-			lspconfig.eslint.setup({
+			vim.lsp.config("eslint", {
 				filetypes = {
 					"javascript",
 					"javascriptreact",
@@ -187,11 +188,10 @@ return {
 
 			-- VUE_LS
 			local vue_language_server_path = vim.fn.expand("$MASON/packages")
-			    .. "/vue-language-server"
-			    .. "/node_modules/@vue/language-server"
+				.. "/vue-language-server"
+				.. "/node_modules/@vue/language-server"
 
-			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact",
-				"vue" }
+			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 			local vue_plugin = {
 				name = "@vue/typescript-plugin",
 				location = vue_language_server_path,
@@ -228,9 +228,10 @@ return {
 				end
 			end
 
-			lspconfig.clangd.setup({
+			vim.lsp.config("clangd", {
 				capabilities = capabilities,
 			})
+			vim.lsp.enable("clangd")
 
 			vim.keymap.set("n", "<F5>", RunDev, { noremap = true, silent = true })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
