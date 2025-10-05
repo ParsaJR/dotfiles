@@ -17,7 +17,7 @@ set $mod Mod4
 
 gaps inner 5px
 
-exec --no-startup-id i3-msg "workspace 2:Terminal; append_layout /home/parsa/.config/i3/workspace-2.json"
+exec --no-startup-id i3-msg "workspace 2:Terminal; append_layout /home/parsajr/.config/i3/workspace-2.json"
 
 # run some apps on startup
 exec --no-startup-id i3-msg 'workspace 1:Web; exec firefox --new-widnow &'
@@ -81,16 +81,16 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # search the web by keyword
-bindsym $mod+grave exec --no-startup-id /home/parsa/scripts/dmenu-firefox-search.sh 
+bindsym $mod+grave exec --no-startup-id ~/scripts/dmenu-firefox-search.sh 
 
 # Select the display to mirror
-bindsym $mod+F8 exec --no-startup-id /home/parsa/scripts/dmenu-displays.sh
+bindsym $mod+F8 exec --no-startup-id ~/scripts/dmenu-displays.sh
 
 # Show cpu intensive apps at the time
-bindsym $mod+F1 exec --no-startup-id /home/parsa/scripts/cpu-intensive-process.sh
+bindsym $mod+F1 exec --no-startup-id ~/scripts/cpu-intensive-process.sh
 
 # Book library 
-bindsym $mod+b exec --no-startup-id /home/parsa/scripts/dmenu-books.sh
+bindsym $mod+b exec --no-startup-id ~/scripts/dmenu-books.sh
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -222,7 +222,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command /home/parsa/.config/i3status/i3status_wrapper.sh
+        status_command /home/parsajr/.config/i3status/i3status_wrapper.sh
 	position bottom
 	strip_workspace_numbers yes
         colors {
@@ -268,4 +268,4 @@ bindsym Print exec "gnome-screenshot -ac"
 bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
 
-bindsym $mod+0xffbf exec --no-startup-id /home/parsa/scripts/toggle_mihomo.sh
+bindsym $mod+m exec --no-startup-id ~/scripts/toggle_mihomo.sh
