@@ -17,7 +17,7 @@ set $mod Mod4
 
 gaps inner 5px
 
-exec --no-startup-id i3-msg "workspace 2:Terminal; append_layout /home/parsajr/.config/i3/workspace-2.json"
+exec --no-startup-id i3-msg "workspace 2:Terminal; append_layout ~/.config/i3/workspace-2.json"
 
 # run some apps on startup
 exec --no-startup-id i3-msg 'workspace 1:Web; exec firefox --new-widnow &'
@@ -59,13 +59,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# Top command on the scratchpad
-exec --no-startup-id gnome-terminal --class=topcmd -- bash -c 'top'
-
-for_window [class="topcmd"] floating enable, move scratchpad
-
-bindsym $mod+p scratchpad show
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.

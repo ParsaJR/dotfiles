@@ -46,7 +46,7 @@
                                     "swallows": [
                                        {
                                        "class": "^Gnome\\-terminal$",
-                                       "instance": "^gnome\\-terminal\\-server$"
+                                       "instance": "^org\\.gnome\\.Terminal$"
                                        }
                                     ],
                                     "type": "con"
@@ -67,7 +67,7 @@
                                     "swallows": [
                                        {
                                        "class": "^Gnome\\-terminal$",
-                                       "instance": "^gnome\\-terminal\\-server$"
+                                       "instance": "^org\\.gnome\\.Terminal$"
                                        }
                                     ],
                                     "type": "con"
@@ -94,7 +94,7 @@
             "swallows": [
                {
                "class": "^Gnome\\-terminal$",
-               "instance": "^gnome\\-terminal\\-server$"
+               "instance": "^org\\.gnome\\.Terminal$"
                }
             ],
             "type": "con"
