@@ -2,7 +2,7 @@
 
 # I read Ebooks a lot. this script will help me to open them fast by just typing the name of the file.
 
-LIBRARY_PATH="/home/parsa/Documents/books/"
+LIBRARY_PATH="$HOME/Documents/books/"
 
 cd $LIBRARY_PATH
 
