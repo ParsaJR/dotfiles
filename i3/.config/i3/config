@@ -264,4 +264,5 @@ bindsym Print exec "gnome-screenshot -ac"
 bindsym $mod+c exec --no-startup-id xfce4-clipman-history
 
 
-bindsym $mod+m exec --no-startup-id ~/scripts/toggle_mihomo.sh
+# toggle mihomo, my gateway to free internet. Should be configured for toggling without sudo password.
+bindsym $mod+F2 exec --no-startup-id ~/scripts/toggle_mihomo.sh
