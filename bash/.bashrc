@@ -150,10 +150,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
+
+export GOPATH=$HOME/go
+
 export PATH=$HOME/.dotnet/tools:$PATH
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/parsa/go/bin
+export PATH=$PATH:$HOME/go/bin
 # pnpm
 export PNPM_HOME="/home/parsa/.local/share/pnpm"
 case ":$PATH:" in
@@ -161,6 +164,7 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
 
 complete -C /home/parsa/go/bin/gocomplete go
 
