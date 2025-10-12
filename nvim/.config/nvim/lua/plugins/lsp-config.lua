@@ -20,6 +20,7 @@ return {
 					"gopls",
 					"emmet_language_server",
 					"pylsp",
+					"stylua",
 				},
 				automatic_enable = false,
 			})
@@ -46,6 +47,9 @@ return {
 				},
 				capabilities = capabilities,
 			})
+
+			vim.lsp.enable("stylua")
+
 			vim.lsp.enable("pylsp")
 			vim.lsp.config("pylsp", {
 				capabilities = capabilities,
@@ -71,20 +75,18 @@ return {
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					pattern = "*.go",
 					callback = function()
-						local params = vim.lsp.util.make_range_params(0,"utf-8")
+						local params = vim.lsp.util.make_range_params(0, "utf-8")
 						params.context = { only = { "source.organizeImports" } }
 						-- buf_request_sync defaults to a 1000ms timeout. Depending on your
 						-- machine and codebase, you may want longer. Add an additional
 						-- argument after params if you find that you have to write the file
 						-- twice for changes to be saved.
 						-- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-						local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction",
-							params)
+						local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
 						for cid, res in pairs(result or {}) do
 							for _, r in pairs(res.result or {}) do
 								if r.edit then
-									local enc = (vim.lsp.get_client_by_id(cid) or {})
-									    .offset_encoding or "utf-16"
+									local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
 									vim.lsp.util.apply_workspace_edit(r.edit, enc)
 								end
 							end
@@ -190,11 +192,10 @@ return {
 
 			-- VUE_LS
 			local vue_language_server_path = vim.fn.expand("$MASON/packages")
-			    .. "/vue-language-server"
-			    .. "/node_modules/@vue/language-server"
+				.. "/vue-language-server"
+				.. "/node_modules/@vue/language-server"
 
-			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact",
-				"vue" }
+			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 			local vue_plugin = {
 				name = "@vue/typescript-plugin",
 				location = vue_language_server_path,
@@ -241,7 +242,7 @@ return {
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-			vim.keymap.set("n","<leader>E",vim.diagnostic.setloclist)
+			vim.keymap.set("n", "<leader>E", vim.diagnostic.setloclist)
 		end,
 	},
 }
