@@ -166,7 +166,7 @@ esac
 # pnpm end
 
 
-complete -C /home/parsa/go/bin/gocomplete go
+complete -C $HOME/go/bin/gocomplete go
 
 ###-begin-npm-completion-###
 #
@@ -279,3 +279,4 @@ fi
 # if command -v minikube &> /dev/null; then
 # 	eval "$(minikube completion bash)"
 # fi
+complete -C /home/parsajr/go/bin/gocomplete go
