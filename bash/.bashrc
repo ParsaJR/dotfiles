@@ -280,3 +280,6 @@ fi
 # 	eval "$(minikube completion bash)"
 # fi
 complete -C /home/parsajr/go/bin/gocomplete go
+
+
+source /etc/profile.d/vte.sh
