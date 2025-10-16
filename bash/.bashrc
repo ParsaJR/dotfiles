@@ -2,8 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# Autojump
-. /usr/share/autojump/autojump.sh
 
 # If not running interactively, don't do anything
 case $- in
@@ -283,3 +281,5 @@ complete -C /home/parsajr/go/bin/gocomplete go
 
 
 source /etc/profile.d/vte.sh
+
+source /usr/share/autojump/autojump.sh
