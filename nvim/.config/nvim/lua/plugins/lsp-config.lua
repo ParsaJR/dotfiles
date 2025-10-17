@@ -144,6 +144,7 @@ return {
 					variables = {},
 				},
 			})
+			vim.lsp.enable("tailwindcss")
 			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
