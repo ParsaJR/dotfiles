@@ -155,6 +155,7 @@ export PATH=$HOME/.dotnet/tools:$PATH
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/.config/emacs/bin
 # pnpm
 export PNPM_HOME="/home/parsa/.local/share/pnpm"
 case ":$PATH:" in
