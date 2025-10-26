@@ -239,10 +239,23 @@ return {
 			vim.lsp.enable("clangd")
 
 			vim.keymap.set("n", "<F5>", RunDev, { noremap = true, silent = true })
+
+			-- Show docs
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+
+			-- Go to definition of the function
+			vim.keymap.set("n", "<M-.>", vim.lsp.buf.definition, {})
+
+			-- Go to Back to previous tag history
+			vim.keymap.set("n", "<M-,>", "<c-t>")
+
+			-- code actions
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+
+			-- open diagnostics floating window
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+
+			-- Open the diagnostic window for showing the entire buffer.
 			vim.keymap.set("n", "<leader>E", vim.diagnostic.setloclist)
 		end,
 	},

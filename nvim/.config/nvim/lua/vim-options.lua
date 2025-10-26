@@ -12,6 +12,7 @@ vim.g.mapleader = " "
 -- Set path to include all sub directory files
 vim.cmd("set path+=**")
 
+
 -- This is needed for js projects where node_modules folder presents.
 -- i create an .exrc file in each javascript project so things liek vim's find command will not get stuck searching that.
 vim.cmd("set exrc")
@@ -20,15 +21,16 @@ vim.cmd("set wildmenu")
 helper.Map("n", "<leader>t", ":Lexplore<CR>:vertical resize 50<CR>")
 
 vim.diagnostic.config({
-	-- Use the default configuration
+	virtual_text = {
+		-- only show when i am on that line.
+		current_line = true,
+		spacing = 2,
+	},
+	signs = true,  -- show signs in the gutter
+	underline = true,  -- underline problematic text
+	update_in_insert = false, -- don't update diagnostics while typing
+	severity_sort = true, -- sort diagnostics by severity
 	virtual_lines = false,
-	virtual_text = true,
-
-	-- Alternatively, customize specific options
-	-- virtual_lines = {
-	--  -- Only show virtual line diagnostics for the current cursor line
-	--  current_line = true,
-	-- },
 })
 
 -- Copy entire buffer

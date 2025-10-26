@@ -11,6 +11,7 @@ source ~/.vimrc
 map <leader>ff <Action>(ReformatCode)
 "format the current line only
 map <leader>fl V<Action>(ReformatCode)
+
 "show hover info (like error and ...)
 map <S-H> <Action>(ShowHoverInfo)
 "toggle breakpoint on currentLine
@@ -25,5 +26,3 @@ map <leader>b <Action>(ToggleLineBreakpoint)
 map <Tab> <Action>(NextTab)
 " And Shift + Tab for PreviousTab
 map <S-Tab> <Action>(PreviousTab)
-" Ctrt + w for closeTab
-map <C-w> <Action>(CloseEditor)
