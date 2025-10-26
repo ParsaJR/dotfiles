@@ -12,6 +12,44 @@ vim.g.mapleader = " "
 -- Set path to include all sub directory files
 vim.cmd("set path+=**")
 
+-- Lorem ipsum
+local lorem_words = {
+	"lorem",
+	"ipsum",
+	"dolor",
+	"sit",
+	"amet",
+	"consectetur",
+	"adipiscing",
+	"elit",
+	"sed",
+	"do",
+	"eiusmod",
+	"tempor",
+	"incididunt",
+	"ut",
+	"labore",
+	"et",
+	"dolore",
+	"magna",
+	"aliqua",
+}
+
+function Lorem(params)
+	local n = tonumber(params.args)
+
+	local sentence = ""
+	for i = 1, n, 1 do
+		local random_index = math.random(1, #lorem_words)
+		sentence = sentence .. lorem_words[random_index] .. " "
+	end
+	local pos = vim.api.nvim_win_get_cursor(0)[2]
+	local line = vim.api.nvim_get_current_line()
+	local nline = line:sub(0, pos) .. sentence .. line:sub(pos + 1)
+	vim.api.nvim_set_current_line(nline)
+end
+
+vim.api.nvim_create_user_command("Lorem", Lorem, { nargs = 1 })
 
 -- This is needed for js projects where node_modules folder presents.
 -- i create an .exrc file in each javascript project so things liek vim's find command will not get stuck searching that.
@@ -26,8 +64,8 @@ vim.diagnostic.config({
 		current_line = true,
 		spacing = 2,
 	},
-	signs = true,  -- show signs in the gutter
-	underline = true,  -- underline problematic text
+	signs = true, -- show signs in the gutter
+	underline = true, -- underline problematic text
 	update_in_insert = false, -- don't update diagnostics while typing
 	severity_sort = true, -- sort diagnostics by severity
 	virtual_lines = false,
@@ -44,6 +82,9 @@ vim.keymap.set("n", "[b", ":bprevious<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "]b", ":bnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "]B", ":bfirst<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "]b", ":blast<CR>", { noremap = true, silent = true })
+
+-- source the current file in place.
+vim.keymap.set("n", "<leader>x", "<cmd>source %<CR>")
 -- vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", ":tabclose<CR>", { noremap = true, silent = true })
 
