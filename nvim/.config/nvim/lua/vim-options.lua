@@ -137,6 +137,15 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
 	end,
 })
 
+
+-- Wrap the lines automatically when the filetype is markdown and similar
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+	pattern = {"*.md","*.txt"},
+	callback = function()
+	vim.cmd("set formatoptions+=a")
+	end
+})
+
 -- Filetypes to enable spellcheck
 local spell_types = { "gitcommit", "markdown" }
 
