@@ -29,24 +29,46 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
+			-- Get the list of files in runtime directories,
+			-- excluding the config directory.
+
+			local runtime_files = vim.api.nvim_get_runtime_file("", true)
+
+			local sep = package.config:sub(1, 1)
+			local cfgdir = vim.fn.stdpath("config")
+
+			for i, path in ipairs(runtime_files) do
+				local conf_path = vim.fn.stdpath("config")
+				if vim.fs.relpath(cfgdir, path) ~= nil then
+					table.remove(runtime_files, i)
+				end
+			end
+
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			vim.lsp.enable("lua_ls")
 			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = { "vim" }, -- Add 'vim' to the list of globals
+							disable = {
+								"redefined-local",
+								"empty-block",
+								"trailing-space",
+								"unused-function",
+								"unused-local",
+								"unused-vararg",
+								"undefined-field",
+							},
 						},
 						workspace = {
-							library = vim.api.nvim_get_runtime_file("", true), -- Include Neovim runtime files
-						},
-						telemetry = {
-							enable = false, -- Disable telemetry
+							library = runtime_files,
+							checkThirdParty = "Disable",
 						},
 					},
 				},
 				capabilities = capabilities,
 			})
+			vim.lsp.enable("lua_ls")
 
 			vim.lsp.enable("stylua")
 
@@ -95,6 +117,7 @@ return {
 					end,
 				}),
 			})
+
 			vim.lsp.enable("html")
 			vim.lsp.config("html", {
 				capabilities = capabilities,
@@ -244,7 +267,7 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
 			-- Go to definition of the function
-			vim.keymap.set("n", "<M-.>", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 
 			-- Go to Back to previous tag history
 			vim.keymap.set("n", "<M-,>", "<c-t>")

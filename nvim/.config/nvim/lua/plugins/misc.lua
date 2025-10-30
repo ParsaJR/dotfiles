@@ -1,16 +1,12 @@
 return {
 	{
-		-- It's a game for getting better at vim
-		"ThePrimeagen/vim-be-good",
+		"tpope/vim-surround",
+		config = function() end,
 	},
 	{
 		"m4xshen/hardtime.nvim",
 		lazy = false,
 		dependencies = { "MunifTanjim/nui.nvim" },
 		opts = {},
-	},
-	{
-		"tpope/vim-surround",
-		config = function() end,
 	},
 }
