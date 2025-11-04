@@ -17,6 +17,7 @@ map <S-H> <Action>(ShowHoverInfo)
 "toggle breakpoint on currentLine
 map <leader>b <Action>(ToggleLineBreakpoint)
 
+set commentary
 
 
 
