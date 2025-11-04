@@ -267,7 +267,7 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
 			-- Go to definition of the function
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<M-.>", vim.lsp.buf.definition, {})
 
 			-- Go to Back to previous tag history
 			vim.keymap.set("n", "<M-,>", "<c-t>")
