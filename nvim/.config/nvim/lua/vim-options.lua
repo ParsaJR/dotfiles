@@ -4,6 +4,9 @@ local helper = require("helpers")
 vim.opt.clipboard = "unnamedplus"
 vim.o.winborder = "rounded"
 
+-- Override the formatoptions later, per case
+vim.opt.formatoptions = ""
+
 -- General
 vim.cmd("set number relativenumber")
 vim.cmd("set scrolloff=5")
@@ -142,7 +145,20 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, {
 vim.api.nvim_create_autocmd({"BufEnter"}, {
 	pattern = {"*.md","*.txt"},
 	callback = function()
-	vim.cmd("set formatoptions+=a")
+	vim.opt.textwidth = 80
+	-- see help for "fo-table"
+	vim.opt.formatoptions = "t"
+	end
+})
+
+
+-- Wrap only the comment lines automatically
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+	pattern = {"*.c","*.go","*.ts","*.js","*.lua"},
+	callback = function()
+	vim.opt.textwidth = 80
+	-- see help for "fo-table"
+	vim.opt.formatoptions = "caq"
 	end
 })
 

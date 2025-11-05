@@ -9,4 +9,17 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim" },
 		opts = {},
 	},
+	{
+		"vimwiki/vimwiki",
+		init = function()
+			vim.g.vimwiki_list = {
+				{
+					path = "~/Draft/writings",
+					syntax = "markdown",
+					ext = "md",
+				},
+			}
+			vim.g.vimwiki_global_ext = 0
+		end,
+	},
 }

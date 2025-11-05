@@ -14,11 +14,11 @@ map <leader>fl V<Action>(ReformatCode)
 
 "show hover info (like error and ...)
 map <S-H> <Action>(ShowHoverInfo)
+map <leader>e <Action>(ShowErrorDescription)
 "toggle breakpoint on currentLine
 map <leader>b <Action>(ToggleLineBreakpoint)
 
 set commentary
-
 
 
 
