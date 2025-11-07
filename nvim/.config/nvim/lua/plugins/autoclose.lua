@@ -5,7 +5,7 @@ return {
 			require("autoclose").setup({
 				options = {
 					disable_command_mode = true,
-					disabled_filetypes = { "text", "markdown" },
+					disabled_filetypes = { "text", "markdown", "vimwiki" },
 				},
 			})
 		end,
