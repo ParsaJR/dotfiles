@@ -27,6 +27,7 @@ return {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
 				},
+				completion = { completeopt = 'menu,menuone,noinsert' },
 				-- The keybinding for completion window
 				mapping = cmp.mapping.preset.insert({
 					["<C-f>"] = cmp.mapping.scroll_docs(-4),
@@ -42,6 +43,7 @@ return {
 					{ name = "luasnip" }, -- For luasnip users.
 				}),
 			})
+
 		end,
 	},
 	{
