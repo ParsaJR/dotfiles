@@ -8,12 +8,25 @@ vim.o.winborder = "rounded"
 vim.opt.formatoptions = ""
 
 -- General
-vim.cmd("set number relativenumber")
-vim.cmd("set scrolloff=5")
 vim.g.mapleader = " "
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Search settings
+vim.opt.ignorecase = true                          -- Case insensitive search
+vim.opt.smartcase = true                           -- Case sensitive if uppercase in search
+vim.opt.incsearch = true                           -- Show matches as you type
+vim.opt.scrolloff = 5
+vim.opt.sidescrolloff = 8
+
+
+-- Behaviour settings
+vim.opt.encoding = "UTF-8"                         -- Of course we use UTF-8
+vim.opt.cursorline = true
+
 
 -- Set path to include all sub directory files
-vim.cmd("set path+=**")
+vim.opt.path:append("**")
 
 -- Lorem ipsum
 local lorem_words = {
@@ -100,6 +113,10 @@ helper.Map("n", "<M-Left>", ":-tabmove<CR>")
 -- Select from bufferlist fast
 helper.Map("n", "gb", ":ls<CR>:b<space>")
 
+-- substitute globally fast using "S" (Inspired by Luke Smith)
+vim.keymap.set("n","S",":%s//g<Left><Left>")
+
+
 -- Customizing the tabline label
 vim.api.nvim_set_hl(0, "npmbuffer", { foreground = "#f69220", background = "#000000" })
 function _G.get_tabline_string()
@@ -158,7 +175,7 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
 	callback = function()
 	vim.opt.textwidth = 80
 	-- see help for "fo-table"
-	vim.opt.formatoptions = "caq"
+	vim.opt.formatoptions = "cq"
 	end
 })
 
@@ -179,9 +196,20 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	desc = "Enable spell check for defined filetypes",
 })
 
+-- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking text",
 	callback = function()
 		vim.highlight.on_yank()
 	end,
+})
+
+
+-- Auto-close terminal when process exits
+vim.api.nvim_create_autocmd("TermClose", {
+  callback = function()
+    if vim.v.event.status == 0 then
+      vim.api.nvim_buf_delete(0, {})
+    end
+  end,
 })
