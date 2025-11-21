@@ -114,7 +114,7 @@ helper.Map("n", "<M-Left>", ":-tabmove<CR>")
 helper.Map("n", "gb", ":ls<CR>:b<space>")
 
 -- substitute globally fast using "S" (Inspired by Luke Smith)
-vim.keymap.set("n","S",":%s//g<Left><Left>")
+vim.keymap.set("n","<C-s>",":%s//g<Left><Left>")
 
 
 -- Customizing the tabline label
