@@ -21,6 +21,7 @@ return {
 				"vimdoc",
 				"vim",
 				"c",
+				"json",
 				"python",
 			},
 			auto_install = false,
