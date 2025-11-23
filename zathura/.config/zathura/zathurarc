@@ -6,3 +6,4 @@ map p print
 map R rotate
 map i recolor
 map t toggle_statusbar
+set font 'monospace normal 14'
