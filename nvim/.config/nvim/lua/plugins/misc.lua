@@ -19,6 +19,7 @@ return {
 					ext = "md",
 				},
 			}
+			vim.keymap.set("n","<C-t>",":VimwikiToggleListItem<CR>")
 			vim.g.vimwiki_global_ext = 0
 		end,
 	},
