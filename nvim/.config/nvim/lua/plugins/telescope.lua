@@ -4,8 +4,11 @@ return {
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
+			local fp = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip"}
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader><leader>", builtin.find_files, {})
+			vim.keymap.set("n", "<leader><leader>", function()
+				builtin.find_files({ hidden = true, file_ignore_patterns = fp})
+			end, {})
 			vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>qf", builtin.quickfix, {})
@@ -16,26 +19,7 @@ return {
 				})
 			end)
 			vim.keymap.set("n", "<leader>g", function()
-				builtin.live_grep({
-					vimgrep_arguments = {
-						"grep",
-						"--extended-regexp",
-						"--color=never",
-						"--with-filename",
-						"--line-number",
-						"-b", -- grep doesn't support a `--column` option :(
-						"--ignore-case",
-						"--recursive",
-						"--no-messages",
-						"--exclude-dir=*cache*",
-						"--exclude-dir=*.git",
-						"--exclude=.*",
-						"--binary-files=without-match",
-						-- git grep also works but limits to only git directories,the above works perfectly
-						-- "git", "grep", "--full-name", "--line-number", "--column", "--extended-regexp", "--ignore-case",
-						-- "--no-color", "--recursive", "--recurse-submodules", "-I"
-					},
-				})
+				builtin.live_grep()
 			end)
 
 			require("telescope").setup({
