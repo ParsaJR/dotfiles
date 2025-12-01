@@ -26,7 +26,7 @@ vim.opt.cursorline = true
 
 
 -- Set path to include all sub directory files
-vim.opt.path:append("**")
+-- vim.opt.path:append("**")
 
 -- Lorem ipsum
 local lorem_words = {
@@ -104,11 +104,18 @@ vim.keymap.set("n", "<leader>x", "<cmd>source %<CR>")
 -- vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", ":tabclose<CR>", { noremap = true, silent = true })
 
+-- Format the entire buffer. Mostly used for wrapping lines. for Lsp related
+-- format, use <leader>ff
+vim.keymap.set("n", "<leader>gw", "gggwGG", { noremap = true, silent = true })
+
 -- Escape in terminal mode
 helper.Map("t", "<ESC>", "<C-\\><C-N>")
 -- move tabs
 helper.Map("n", "<M-Right>", ":+tabmove<CR>")
 helper.Map("n", "<M-Left>", ":-tabmove<CR>")
+
+-- Open Terminal in current pwd
+vim.keymap.set("n","<C-n>", ":!st & disown<CR><CR>")
 
 -- Select from bufferlist fast
 helper.Map("n", "gb", ":ls<CR>:b<space>")
