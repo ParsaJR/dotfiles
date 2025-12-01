@@ -135,7 +135,6 @@ return {
 					"css",
 					"eruby",
 					"html",
-					"javascript",
 					"javascriptreact",
 					"less",
 					"sass",
