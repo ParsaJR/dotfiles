@@ -11,13 +11,11 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"clangd",
 					"ts_ls",
 					"vue_ls",
 					"html",
 					"tailwindcss",
 					"cssls",
-					"gopls",
 					"emmet_language_server",
 					"pylsp",
 					"stylua",
