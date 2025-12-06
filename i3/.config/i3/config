@@ -271,7 +271,8 @@ bindsym $mod+0xffc2 exec --no-startup-id brightnessctl set 10-%
 
 
 # Take a screenshot
-bindsym Print exec "gnome-screenshot -ac"
+bindsym Print exec "maim -s | xclip -selection clipboard -t image/png"
+
 
 
 # Open up clipboard history
