@@ -196,7 +196,7 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
 })
 
 -- Filetypes to enable spellcheck
-local spell_types = { "gitcommit", "markdown" }
+local spell_types = { "gitcommit" }
 
 -- Disable spell check by default
 vim.opt_local.spell = false
