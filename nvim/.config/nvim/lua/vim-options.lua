@@ -175,6 +175,15 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
 	end
 })
 
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+	callback = function()
+		local filepath = vim.api.nvim_buf_get_name(0)
+		if filepath.sub(filepath, 0, 13) == "/tmp/calcurse" then
+			vim.opt_local.filetype = 'markdown'
+		end
+	end
+})
+
 
 -- Wrap only the comment lines automatically
 vim.api.nvim_create_autocmd({"BufEnter"}, {
