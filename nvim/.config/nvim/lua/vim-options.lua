@@ -115,7 +115,7 @@ helper.Map("n", "<M-Right>", ":+tabmove<CR>")
 helper.Map("n", "<M-Left>", ":-tabmove<CR>")
 
 -- Open Terminal in current pwd
-vim.keymap.set("n","<C-n>", ":!st & disown<CR><CR>")
+vim.keymap.set("n","<C-n>", ":!st > /dev/null 2>&1 & disown<CR><CR>")
 
 -- Select from bufferlist fast
 helper.Map("n", "gb", ":ls<CR>:b<space>")
