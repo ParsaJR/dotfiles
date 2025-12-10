@@ -24,4 +24,4 @@ alias displays='xrandr | grep " connected"'
 alias c='clear'
 alias vim='nvim'
 
-alias opennewterm="st > /dev/null 2>&1 disown"
+alias opennewterm="st > /dev/null 2>&1 & disown"
