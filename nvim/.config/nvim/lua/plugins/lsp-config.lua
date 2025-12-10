@@ -168,6 +168,7 @@ return {
 			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
+			vim.lsp.enable("cssls")
 			vim.lsp.config("cssls", {
 				capabilities = capabilities,
 				filetypes = { "css", "scss", "less" },
