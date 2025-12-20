@@ -110,15 +110,16 @@ function cheat() {
 	curl cheat.sh/$1
 }
 
-# Swap esc to caps lock
-setxkbmap -option caps:swapescape
-
-# Disable auto-lock screen
-xset s off
-xset -dpms
-
-# Key repeat rate
-xset r rate 300 50
+# # Swap esc to caps lock
+# setxkbmap -option caps:swapescape
+#
+# # Disable auto-lock screen
+# xset s off
+# xset -dpms
+#
+# # Key repeat rate
+# xset r rate 300 50
+#
 
 # correct simple mistakes please
 shopt -s cdspell

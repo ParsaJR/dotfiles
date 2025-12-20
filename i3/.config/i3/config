@@ -250,8 +250,17 @@ bar {
     }
 }
 
-# Keyboard input config for English/Persian
+# # Keyboard input config for English/Persian
 exec_always "setxkbmap -model pc104 -layout us,ir -option grp:alt_shift_toggle"
+
+exec_always "setxkbmap -option caps:swapescape"
+
+
+exec_always "xset s off"
+exec_always "xset -dpms"
+
+# Key repeat rate
+exec_always "xset r rate 300 50"
 
 # Reboot,lock,Shutdown
 set $mode_system System (l) lock, (Shift + r) reboot, (Shift + t) Shutdown, (Shift + s) Sleep 
