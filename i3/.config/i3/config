@@ -162,13 +162,13 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:Web"
 set $ws2 "2:Terminal"
-set $ws3 "3:Dev"
+set $ws3 "3:Emacs"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9:Pomo"
+set $ws9 "9:Org"
 set $ws10 "10"
 
 # switch to workspace
