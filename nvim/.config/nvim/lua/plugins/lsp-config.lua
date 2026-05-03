@@ -17,7 +17,6 @@ return {
 					"tailwindcss",
 					"cssls",
 					"emmet_language_server",
-					"pylsp",
 					"stylua",
 				},
 				automatic_enable = false,

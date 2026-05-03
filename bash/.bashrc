@@ -3,6 +3,26 @@
 # for examples
 
 
+command_not_found_handle ()
+{
+    local runcnf=1;
+    local retval=127;
+    [[ $- == *"i"* ]] || runcnf=0;
+    [[ ! -S /run/dbus/system_bus_socket ]] && runcnf=0;
+    [[ ! -x '/usr/libexec/packagekitd' ]] && runcnf=0;
+    [[ -n ${COMP_CWORD-} ]] && runcnf=0;
+    [[ ! -x '/usr/libexec/pk-command-not-found' ]] && runcnf=0;
+    if [ $runcnf -eq 1 ]; then
+        '/usr/libexec/pk-command-not-found' "$@";
+        retval=$?;
+    else
+        if [[ -n "${BASH_VERSION-}" ]]; then
+            printf 'bash: %s%s\n' "${1:+$1: }" "$(gettext PackageKit 'command not found')" 1>&2;
+        fi;
+    fi;
+    return $retval
+}
+
 # If not running interactively, don't do anything
 case $- in
 *i*) ;;
@@ -133,7 +153,7 @@ shopt -s no_empty_cmd_completion
 # Set XDG Config home folder configuration
 export XDG_CONFIG_HOME="$HOME/.config"
 
-export EDITOR='nvim'
+export EDITOR='vim'
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
