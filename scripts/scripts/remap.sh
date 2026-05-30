@@ -7,6 +7,8 @@ echo "$(date): remap.sh script executed" >> /tmp/remap.log
 # Swap esc to caps lock
 setxkbmap -option caps:swapescape
 
+setxkbmap -model pc104 -layout us,ir -option grp:win_space_toggle
+
 # Disable auto-lock screen
 xset s off
 xset -dpms
