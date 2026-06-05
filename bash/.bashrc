@@ -305,4 +305,4 @@ complete -C /home/parsajr/go/bin/gocomplete go
 
 source /etc/profile.d/vte.sh
 
-source /usr/share/autojump/autojump.sh
+source /usr/share/autojump/autojump.bash
