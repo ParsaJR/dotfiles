@@ -316,6 +316,10 @@
   (setq ivy-initial-inputs-alist nil))
 
 
+(use-package counsel-projectile
+  :ensure t)
+
+
 (use-package ido
   :ensure nil ; built-in
   :config
@@ -517,7 +521,7 @@
 " end t)
       (replace-match " " nil nil))))
 
-(setq counsel-fzf-cmd "fd --type file | fzf -f \"%s\"")
+(setq counsel-fzf-cmd "fd --follow --type file | fzf -f \"%s\"")
 
 (defun fzf ()
   "fuzzy find on the closest git repository"
