@@ -248,7 +248,7 @@ bar {
 # # Keyboard input config for English/Persian
 exec_always "setxkbmap -model pc104 -layout us,ir -option grp:win_space_toggle"
 
-# exec_always "setxkbmap -option caps:swapescape"
+exec_always "setxkbmap -option caps:swapescape"
 
 
 exec_always "xset s off"
