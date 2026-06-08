@@ -17,8 +17,9 @@ for dep in "${DEPS[@]}"; do
 	fi
 done
 
+mkdir -p ~/.local/share/fonts
 # installing nerdfonts "JetbrainsMono"
-if [ -d ~/.local/share/fonts ] && ! fc-list | grep -q "JetBrains*"; then
+if ! fc-list | grep -q "JetBrains*"; then
 	echo "Downloading fonts... Please wait"
 	cd ~/.local/share/fonts
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.tar.xz
@@ -30,8 +31,6 @@ if [ -d ~/.local/share/fonts ] && ! fc-list | grep -q "JetBrains*"; then
 else
 	if fc-list | grep -q "JetBrains*"; then
 		echo -e "$checkIcon Fonts are installed."
-	else
-		echo "$errorIcon Directory font does not exist!"
 	fi
 fi
 
