@@ -14,7 +14,7 @@
 ; General emacs settings.
 (load "jr-general")
 
-(load "jr-parsa")
+(load "jr-parsa" t)
 
 (load "jr-python")
 
@@ -28,12 +28,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(help-window-select t)
- '(package-selected-packages
-   '(catppuccin-theme company-box counsel dockerfile-mode drag-stuff eldoc-box
-		      evil-collection exec-path-from-shell ido-vertical-mode
-		      ivy-rich json-mode lorem-ipsum magit markdown-mode neotree
-		      projectile pyvenv super-save systemd tab-jump-out tldr
-		      treesit-auto yaml-mode yasnippet)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
