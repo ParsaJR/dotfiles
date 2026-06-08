@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 echo -e "*** Dotfiles Install Script ***\n"
 
 # dependencies that need to be installed in order to use them here.
