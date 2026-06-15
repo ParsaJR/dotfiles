@@ -22,6 +22,6 @@ alias runmongo='docker run --name mymongo -d -p 27017:27017 mongo:latest'
 alias pn='pnpm'
 alias displays='xrandr | grep " connected"'
 alias c='clear'
-alias vim='nvim'
+alias vim='vimx'
 
 alias opennewterm="st > /dev/null 2>&1 & disown"

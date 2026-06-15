@@ -153,7 +153,7 @@ shopt -s no_empty_cmd_completion
 # Set XDG Config home folder configuration
 export XDG_CONFIG_HOME="$HOME/.config"
 
-export EDITOR='vim'
+export EDITOR='vimx'
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
