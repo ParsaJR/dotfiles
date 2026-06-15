@@ -2,8 +2,12 @@
 ;; if specific domains are started to grow, i will likely to seperate them.
 (provide 'jr-general)
 
-;; the default font is anything that is configured in the fontconfig.
-(set-frame-font "Monospace-14" nil t)
+;; This is commented because it is problematic when using emacs in client/server mode.
+;; Simply beacuse the "set-frame-font" only applies to the existing frames.
+;; (set-frame-font "Monospace-14" nil t)
+
+(setq default-frame-alist '((font . "Monospace-14")))
+
 
 
 ; "C-/ to change the buffer input method to persian. So still i can use the
