@@ -1,12 +1,20 @@
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+
 (defun vue-eglot-init-options2 (_server)
   (let ((tsdk-path
          (expand-file-name
           "lib"
           (string-trim-right
            (shell-command-to-string
-            "npm list --global --parseable typescript | head -n1")))))
+            "pnpm list --global --parseable typescript | tail -n 1")))))
     `(:typescript (:tsdk ,tsdk-path)
       :vue (:hybridMode :json-false))))
+
+(use-package web-mode
+  :ensure t)
+
+(use-package corfu
+  :ensure t)
 
 (define-derived-mode pbgc-vue-mode web-mode "pbVue"
   "A major mode derived from web-mode, for editing .vue files with LSP support.")

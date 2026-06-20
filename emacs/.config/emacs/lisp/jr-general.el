@@ -83,6 +83,9 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
+(setq vc-follow-symlinks t)
+
+
 ;; Don't ask to save files before compilation! just save them
 (setq compilation-ask-about-save nil)
 
@@ -198,6 +201,7 @@
      (define-key global-map "\C-cl" 'org-store-link)
      (define-key global-map "\C-ca" 'org-agenda)
      (define-key global-map "\C-cc" 'org-capture)
+     (setq org-startup-folded 'content)
 
 
      :hook (org-mode . org-indent-mode)
@@ -262,6 +266,7 @@
               ("M-k" . ivy-previous-line)
 	      )
   :config (ivy-mode 1)
+  (amx-mode 1)
   (setq ivy-case-fold-search-default 'auto))
 
 (use-package ivy-rich
@@ -298,7 +303,10 @@
   :defer t
   :config
   ;; does not work in https://github.com/gokrazy/breakglass
-  (setq tramp-histfile-override "/dev/null"))
+    ;(setq tramp-histfile-override "/dev/null"))
+  (defadvice projectile-project-root (around ignore-remote first activate)
+    (unless (file-remote-p default-directory) ad-do-it))
+)
 
 
 (use-package drag-stuff
@@ -367,6 +375,7 @@
   :defer t
   )
 
+
 (use-package eglot
   :after xref
   :hook
@@ -383,8 +392,8 @@
   (evil-define-key '(normal visual) 'global (kbd "g r n") 'eglot-rename)
   (evil-define-key '(normal visual) 'global (kbd "g r i") 'eglot-find-implementation)
   (evil-define-key '(normal) 'global (kbd "<leader>ca") 'eglot-code-actions)
-
   )
+
 
 (use-package pyvenv
   :ensure t)
