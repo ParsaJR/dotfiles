@@ -25,3 +25,5 @@ alias c='clear'
 alias vim='vimx'
 
 alias opennewterm="st > /dev/null 2>&1 & disown"
+
+alias ec="emacsclient -nc"
